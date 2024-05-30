@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<body class="background wrapper" id="mainBody">
+<head th:fragment="head">
+    <link rel="icon" href="style/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Pick N Mix</title>
+    <link href="style/style.css" rel="stylesheet"/>
+    <script src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<main>
+    <div class="top-padding"></div>
+    <div id="attacher"></div>
+    <div class=flex-stack>
+        <div class="heading">
+            <h1 class="landing-text text-xl">
+                Pick and Mix
+            </h1>
+            <p id="intro-text" class="landing-text text-medium tagline">
+                The aim of the game is to find anagrams that are at most one letter off your starting word.</br>
+                </br>
+                 For example: FIRST -> STIRS (Mixing the letters and replacing an F with an S)</br>
+                </br>
+                Anagrams without any letters changing are allowed.</br>
+                </br>
+                Please type a starting 5 letter word.</br>
+            </p>
+        </div>
+        <div id="interaction-space" class="text-large monster">
+            <div class='flex-container'>
+                <div id="score"></div>
+            </div>
+            <div class='flex-container'>
+                <div id="last-word"></div>
+                <div class="right-pushed" id="countdown"></div>
+            </div>
+            <form id="word-form">
+                    <input type="text" class="base-input" id="word" name="word" autocomplete="off" maxlength="5" autofocus>
+                    <input type="submit" hidden />
+            </form>
+            <div id="last-message"></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
