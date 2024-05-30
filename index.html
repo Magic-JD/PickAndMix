@@ -39,7 +39,7 @@
                 <div class="right-pushed" id="countdown"></div>
             </div>
             <form id="word-form">
-                    <input type="text" class="base-input" id="word" name="word" autocomplete="off" maxlength="5" autofocus>
+                    <input type="text" onkeydown="return /[a-z]/i.test(event.key)" class="base-input" id="word" name="word" autocomplete="off" maxlength="5" autofocus>
                     <input type="submit" hidden />
             </form>
             <div id="last-message"></div>
