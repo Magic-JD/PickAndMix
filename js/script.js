@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if(e.keyCode == 37 || e.keyCode == 39)
             e.preventDefault();
     });
+
+    const page = document.getElementById('all')
+    page.addEventListener('click', (event) => {
+        stopMoveCursor.focus();
+    });
 });
 
 
