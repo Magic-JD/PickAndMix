@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
     });
 
+    stopMoveCursor.addEventListener('keyup', function(e){
+        event.target.value = event.target.value.substring(0, 5)
+    });
     const page = document.getElementById('all')
     page.addEventListener('click', (event) => {
         window.scrollTo(0, document.body.scrollHeight);
