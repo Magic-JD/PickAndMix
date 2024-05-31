@@ -57,6 +57,7 @@ function setInitialWord(word) {
         introText.remove();
         const inputElement = document.getElementById('word');
         inputElement.className = 'monster-input'
+        window.scrollTo(0, 0);
         addResult(gameState)
     } else {
         addError(gameState)
