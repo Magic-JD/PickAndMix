@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function useWord(userWord){
+    const input = document.getElementById('word')
+    input.value = '';
     word = userWord.toUpperCase();
     if(isFirstTurn){
         setInitialWord(word);
@@ -124,8 +126,6 @@ function addResult(content) {
 }
 
 function addWordDiv(word){
-    const input = document.getElementById('word')
-    input.value = '';
     const lastWordDiv = document.getElementById('last-word');
     lastWordDiv.textContent = 'Last word: ' + word;
     const scoreCount = document.getElementById('score');
