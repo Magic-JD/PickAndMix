@@ -293,7 +293,7 @@ main {
     position: fixed;
     text-align: center;
     width: 100%;
-    top: 80%;
+    top: 80vh;
     left: 50%;
     transform: translate(-50%, 0);
     border-radius: 20;
