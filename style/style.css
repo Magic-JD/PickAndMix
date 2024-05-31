@@ -289,11 +289,11 @@ main {
 .error-message {
     background: var(--clr-error);
     text-color: var(--clr-text);
-    font-size: var(--fs-large);
+    font-size: var(--fs-medium);
     position: fixed;
     text-align: center;
     width: 100%;
-    top: 80vh;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, 0);
     border-radius: 20;
