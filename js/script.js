@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const page = document.getElementById('all')
     page.addEventListener('click', (event) => {
-        stopMoveCursor.focus();
         window.scrollTo(0, document.body.scrollHeight);
+        stopMoveCursor.focus();
     });
 });
 
