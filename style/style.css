@@ -243,10 +243,10 @@ main {
     background: var(--clr-error);
     text-color: var(--clr-text);
     font-size: var(--fs-medium);
-    position: fixed;
+    position: absolute;
     text-align: center;
     width: 100%;
-    top: 0;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, 0);
     border-radius: 20;
