@@ -17,6 +17,16 @@
     --fs-monster: 20rem;
 }
 
+@media only screen and (max-width: 768px) {
+    :root {
+    --fs-small: 0.25rem;
+    --fs-medium: 1.5rem;
+    --fs-large: 2rem;
+    --fs-extra-large: 5rem;
+    --fs-monster: 8rem;
+    }
+}
+
 * Box sizing rules */
 *,
 *::before,
