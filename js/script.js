@@ -9,10 +9,10 @@ let intervalId = null;
 const previousWords = new Set();
 
 const VALID = "";
-const NOT_A_WORD = "This is not a word. Please pick again.";
-const ALREADY_CHOSEN = "You have already used this word. Please pick a new word.";
-const INCORRECT_LENGTH = "You must pick a five letter word.";
-const TOO_MANY_MODIFICATIONS = "You can only change one letter from the previous word.";
+const NOT_A_WORD = "This is not a recognised word.";
+const ALREADY_CHOSEN = "You have already used this word.";
+const INCORRECT_LENGTH = "Words must be 5 letters long.";
+const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('word-form');
@@ -53,7 +53,7 @@ function setInitialWord(word) {
         isFirstTurn = false;
         startCountdown();
         addWordDiv(word);
-        const introText = document.getElementById('intro-text');
+        const introText = document.getElementById('heading');
         introText.remove();
         const inputElement = document.getElementById('word');
         inputElement.className = 'monster-input'
