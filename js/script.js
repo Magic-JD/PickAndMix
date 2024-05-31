@@ -30,10 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     stopMoveCursor.addEventListener('keyup', function(e){
-        stopMoveCursor.blur();
-        stopMoveCursor.focus();
+        event.target.value = event.target.value.substring(0, 5).replace(/[^a-zA-Z]/gi, '')
     });
-
     const page = document.getElementById('all')
     page.addEventListener('click', (event) => {
         window.scrollTo(0, document.body.scrollHeight);
