@@ -124,7 +124,6 @@ label {
     background-color: var(--clr-background);
     color: var(--clr-text);
     text-transform:uppercase;
-    padding-bottom: 30px
 }
 
 
@@ -140,6 +139,7 @@ label {
     background-color: var(--clr-background);
     color: var(--clr-text);
     text-transform:uppercase;
+    padding-bottom: 30px
 }
 
 input:focus {
