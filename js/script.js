@@ -186,6 +186,6 @@ function addCurrentTime(){
 }
 
 function resetCountdown(){
-    countdown = 60;
+    countdown = Math.max(60 - (currentScore * 3), countdown, 6);
     addCurrentTime()
 }
