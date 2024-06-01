@@ -159,7 +159,7 @@ function addError(error){
 
 function startCountdown(){
     addCurrentTime();
-    intervalId = setInterval(countdownTime, 100);
+    intervalId = setInterval(countdownTime, 1000);
 }
 
 function countdownTime(){
