@@ -120,7 +120,7 @@ label {
     border: none;
     caret-color: transparent;
     text-align: center;
-    font-size: calc(25vw);
+    font-size: calc(22vw);
     background-color: var(--clr-background);
     color: var(--clr-text);
     text-transform:uppercase;
