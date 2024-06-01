@@ -182,19 +182,21 @@ function countdownTime(){
         listHolder.replaceChildren(wordList, options);
         gameOver.textContent = 'GAME OVER';
         finalScore.textContent = 'Final Score: ' + currentScore;
-        wordList.textContent = 'You chose:';
-        options.textContent = 'Final options for ' + lastWord + ':';
+        wordList.textContent = 'Choices:';
+        options.textContent = 'For ' + lastWord + ':';
         element.replaceChildren(gameOver, br1, finalScore, br2);
         element.parentNode.insertAdjacentElement("afterend", listHolder)
 
         previousWords.forEach(value => {
             const preWordDiv = document.createElement('div');
             preWordDiv.textContent = value;
+            preWordDiv.className = 'text-large';
             wordList.appendChild(preWordDiv);
         });
         calculateNextPossibilities(lastWord).forEach(value => {
             const possWordDiv = document.createElement('div');
             possWordDiv.textContent = value;
+            possWordDiv.className = 'text-large';
             options.appendChild(possWordDiv);
         })
 
