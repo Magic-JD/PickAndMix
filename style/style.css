@@ -1,6 +1,6 @@
 :root {
-    --clr-highlight: rgb(156, 64, 105);
-    --clr-background: rgb(194, 0, 110);
+    --clr-highlight: rgb(161, 5, 74);
+    --clr-background: rgb(204, 86, 138);
     --clr-text: rgb(250, 220, 237);
     --clr-error: rgb(102, 2, 29);
 
@@ -221,6 +221,7 @@ input:focus {
   border: none;
   padding: 2px 7px;
   margin: 5px 20px;
+  margin-bottom: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -230,7 +231,44 @@ input:focus {
   transition-duration: 0.4s;
 }
 
+
+.button-small-dark {
+  background-color: var(--clr-highlight);
+  color: var(--clr-text);
+  border: none;
+  padding: 2px 7px;
+  margin: 5px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--fs-medium);
+  font-family: var(--ff-body);
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.button-small-light {
+  background-color: var(--clr-text);
+  color: var(--clr-background);
+  border: none;
+  padding: 2px 7px;
+  margin: 5px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--fs-medium);
+  font-family: var(--ff-body);
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
 .button:hover {
+  background-color: var(--clr-text);
+  color: var(--clr-background);
+}
+
+.button-small:hover {
   background-color: var(--clr-text);
   color: var(--clr-background);
 }

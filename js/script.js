@@ -5,6 +5,8 @@ let currentScore = 0;
 let isFirstTurn = true;
 let countdown = 60;
 let intervalId = null;
+let multi = 2;
+let minTime = 8;
 
 const previousWords = new Set();
 
@@ -40,6 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
         var val = stopMoveCursor.value;
         stopMoveCursor.value = '';
         stopMoveCursor.value = val;
+    });
+
+    const btnEasy = document.getElementById('btn-easy')
+    const btnMedium = document.getElementById('btn-medium')
+    const btnHard = document.getElementById('btn-hard')
+    btnEasy.addEventListener('click', (event) => {
+        setDiff(1);
+        btnEasy.className = "button-small-light"
+        btnMedium.className = "button-small-dark"
+        btnHard.className = "button-small-dark"
+    });
+    btnMedium.addEventListener('click', (event) => {
+        setDiff(2);
+        btnEasy.className = "button-small-dark"
+        btnMedium.className = "button-small-light"
+        btnHard.className = "button-small-dark"
+    });
+    btnHard.addEventListener('click', (event) => {
+        setDiff(3);
+        btnEasy.className = "button-small-dark"
+        btnMedium.className = "button-small-dark"
+        btnHard.className = "button-small-light"
     });
 });
 
@@ -215,6 +239,21 @@ function addCurrentTime(){
 }
 
 function resetCountdown(){
-    countdown = Math.max(60 - (currentScore * 3), countdown, 6);
+    countdown = Math.max(60 - (currentScore * multi), countdown, minTime);
     addCurrentTime()
+}
+
+function setDiff(number){
+    if(number == 1){
+        multi = 0;
+        minTime = 60;
+    }
+    if(number == 2){
+        multi = 2;
+        minTime = 8;
+    }
+    if (number == 3){
+        multi = 5;
+        minTime = 5;
+    }
 }
