@@ -114,6 +114,16 @@ function validatePreviousWord(word, lastWord) {
     return VALID;
 }
 
+function calculateNextPossibilities(word){
+    finalOptions = new Set();
+    words.forEach(w => {
+        if(w != word && !previousWords.has(w) && validatePreviousWord(w, word) == VALID){
+            finalOptions.add(w);
+        }
+    });
+    return finalOptions;
+}
+
 function validateWord(word, usedWords) {
     if (word.length !== 5) {
         return INCORRECT_LENGTH;
@@ -149,7 +159,7 @@ function addError(error){
 
 function startCountdown(){
     addCurrentTime();
-    intervalId = setInterval(countdownTime, 1000);
+    intervalId = setInterval(countdownTime, 100);
 }
 
 function countdownTime(){
@@ -163,17 +173,30 @@ function countdownTime(){
         const br3 = document.createElement('br');
         const gameOver = document.createElement('div');
         const finalScore = document.createElement('div');
+        const listHolder = document.createElement('div');
+        listHolder.className = 'end-container text-large'
+        const options = document.createElement('div');
+        options.className = 'end-stack right-pushed'
         const wordList = document.createElement('div');
+        wordList.className = 'end-stack'
+        listHolder.replaceChildren(wordList, options);
         gameOver.textContent = 'GAME OVER';
         finalScore.textContent = 'Final Score: ' + currentScore;
         wordList.textContent = 'You chose:';
-        element.replaceChildren(gameOver, br1, finalScore, br2, wordList);
+        options.textContent = 'Final options for ' + lastWord + ':';
+        element.replaceChildren(gameOver, br1, finalScore, br2);
+        element.parentNode.insertAdjacentElement("afterend", listHolder)
 
         previousWords.forEach(value => {
             const preWordDiv = document.createElement('div');
             preWordDiv.textContent = value;
-            element.appendChild(preWordDiv)
+            wordList.appendChild(preWordDiv);
         });
+        calculateNextPossibilities(lastWord).forEach(value => {
+            const possWordDiv = document.createElement('div');
+            possWordDiv.textContent = value;
+            options.appendChild(possWordDiv);
+        })
 
     } else {
         addCurrentTime();
