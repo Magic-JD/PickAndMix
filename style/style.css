@@ -1,5 +1,5 @@
 :root {
-    --clr-highlight: rgb(1, 19, 45);
+    --clr-highlight: rgb(156, 64, 105);
     --clr-background: rgb(194, 0, 110);
     --clr-text: rgb(250, 220, 237);
     --clr-error: rgb(102, 2, 29);
@@ -213,6 +213,26 @@ input:focus {
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.button {
+  background-color: var(--clr-highlight);
+  color: var(--clr-text);
+  border: none;
+  padding: 2px 7px;
+  margin: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--fs-large);
+  font-family: var(--ff-body);
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: var(--clr-text);
+  color: var(--clr-background);
 }
 
 .right-pushed {

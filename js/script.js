@@ -159,7 +159,7 @@ function addError(error){
 
 function startCountdown(){
     addCurrentTime();
-    intervalId = setInterval(countdownTime, 1000);
+    intervalId = setInterval(countdownTime, 10);
 }
 
 function countdownTime(){
@@ -173,6 +173,10 @@ function countdownTime(){
         const br3 = document.createElement('br');
         const gameOver = document.createElement('div');
         const finalScore = document.createElement('div');
+        const refreshButton = document.createElement('button');
+        refreshButton.className = 'button';
+        refreshButton.textContent = "Try Again"
+        refreshButton.addEventListener("click", (event) => { window.location.reload() });
         const listHolder = document.createElement('div');
         listHolder.className = 'end-container text-large'
         const options = document.createElement('div');
@@ -184,7 +188,7 @@ function countdownTime(){
         finalScore.textContent = 'Final Score: ' + currentScore;
         wordList.textContent = 'Choices:';
         options.textContent = 'For ' + lastWord + ':';
-        element.replaceChildren(gameOver, br1, finalScore, br2);
+        element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, br3);
         element.parentNode.insertAdjacentElement("afterend", listHolder)
 
         previousWords.forEach(value => {
