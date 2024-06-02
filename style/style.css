@@ -242,7 +242,7 @@ input:focus {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: var(--fs-medium);
+  font-size: var(--fs-small);
   font-family: var(--ff-body);
   border-radius: 8px;
   transition-duration: 0.4s;
@@ -258,7 +258,7 @@ input:focus {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: var(--fs-medium);
+  font-size: var(--fs-small);
   font-family: var(--ff-body);
   border-radius: 8px;
   transition-duration: 0.4s;
