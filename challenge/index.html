@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<body class="background wrapper" id="mainBody">
+<head th:fragment="head">
+    <link rel="icon" href="../style/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+    <title>Pick N Mix</title>
+    <link href="../style/style.css" rel="stylesheet"/>
+    <script src="../js/challenge.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<main id='all'>
+    <div class="top-padding"></div>
+    <div class=flex-stack>
+        <div id="heading" class="heading">
+            <h1 class="landing-text text-xl">
+                Pick and Mix
+            </h1>
+            <p id="intro-text" class="landing-text text-small tagline">
+                Get from word A to word B in as few changes as possibe!</br>
+                </br>It can be done in 5 steps...</br>
+                </br>Type BEGIN to start and see your starting and target words</br>
+            </p>
+        </div>
+        <div id="interaction-space" class="text-medium monster">
+            <div class='flex-container'>
+                <div id="score"></div>
+                <div class="right-pushed" id="countdown"></div>
+            </div>
+            <div id="attacher"></div>
+            <div class='flex-container'>
+                <div id="last-word"></div>
+                <div class="right-pushed" id="goal-word"></div>
+            </div>
+            <form id="word-form">
+                    <input type="text" onkeydown="return /[a-z]/i.test(event.key)" class="base-input" id="word" name="word" autocomplete="off" maxlength="5" autofocus>
+                    <input type="submit" hidden />
+            </form>
+            <div id="last-message"></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+
