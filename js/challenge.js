@@ -150,7 +150,7 @@ function addWordDiv(word){
     const lastWordDiv = document.getElementById('last-word');
     lastWordDiv.textContent = 'Last word: ' + word;
     const scoreCount = document.getElementById('score');
-    scoreCount.textContent = 'Score: ' + (currentScore <= 0 ? '' : currentScore);
+    scoreCount.textContent = 'Steps: ' + (currentScore <= 0 ? '' : currentScore);
 }
 
 function addError(error){
