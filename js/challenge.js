@@ -4,10 +4,6 @@ let lastWord = "LEMUR";
 let goalWord = "CHAOS";
 let currentScore = 0;
 let isFirstTurn = true;
-let countdown = 60;
-let intervalId = null;
-let multi = 2;
-let minTime = 8;
 
 const previousWords = new Set();
 
@@ -44,28 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         stopMoveCursor.value = '';
         stopMoveCursor.value = val;
     });
-
-    const btnEasy = document.getElementById('btn-easy')
-    const btnMedium = document.getElementById('btn-medium')
-    const btnHard = document.getElementById('btn-hard')
-    btnEasy.addEventListener('click', (event) => {
-        setDiff(1);
-        btnEasy.className = "button-small-light"
-        btnMedium.className = "button-small-dark"
-        btnHard.className = "button-small-dark"
-    });
-    btnMedium.addEventListener('click', (event) => {
-        setDiff(2);
-        btnEasy.className = "button-small-dark"
-        btnMedium.className = "button-small-light"
-        btnHard.className = "button-small-dark"
-    });
-    btnHard.addEventListener('click', (event) => {
-        setDiff(3);
-        btnEasy.className = "button-small-dark"
-        btnMedium.className = "button-small-dark"
-        btnHard.className = "button-small-light"
-    });
 });
 
 
@@ -87,7 +61,6 @@ function setInitialWord(word) {
         previousWords.add(word);
         lastWord = word;
         isFirstTurn = false;
-        startCountdown();
         addWordDiv(word);
         const introText = document.getElementById('heading');
         introText.remove();
@@ -188,20 +161,6 @@ function addError(error){
     attacher.replaceChildren(errorMessage);
 }
 
-function startCountdown(){
-    addCurrentTime();
-    intervalId = setInterval(countdownTime, 1000);
-}
-
-function countdownTime(){
-    countdown = countdown - 1;
-    if(countdown <= 0){
-        endGame();
-    } else {
-        addCurrentTime();
-    }
-}
-
 function endGame(){
     clearInterval(intervalId);   
     const element = document.getElementById('interaction-space');
@@ -228,19 +187,5 @@ function endGame(){
         preWordDiv.className = 'text-large';
         wordList.appendChild(preWordDiv);
     });
-}
-
-function addCurrentTime(){
-    const cd = document.getElementById('countdown')
-    cd.textContent = countdown + 's'
-}
-
-function resetCountdown(){
-    if(score < 5){
-        countdown = 60;
-    } else {
-        countdown = Math.max(60 - (currentScore * multi), countdown, minTime);
-    }
-    addCurrentTime()
 }
 
