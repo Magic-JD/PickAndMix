@@ -94,7 +94,6 @@ function addWord(word) {
     }
     addWordDiv(lastWord);
     addResult(gameState);
-    resetCountdown();
     return;
 }
 
@@ -162,7 +161,6 @@ function addError(error){
 }
 
 function endGame(){
-    clearInterval(intervalId);   
     const element = document.getElementById('interaction-space');
     element.className = 'text-large bold landing-text'
     const br1 = document.createElement('br');
