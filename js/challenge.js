@@ -21,25 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const wordInput = document.getElementById('word').value;
         useWord(wordInput);
     });
-
-    const stopMoveCursor = document.getElementById('word');
-    stopMoveCursor.addEventListener('keydown', function(e){
-        if(e.keyCode == 37 || e.keyCode == 39)
-            e.preventDefault();
-    });
-
-    stopMoveCursor.addEventListener('keyup', function(e){
-        event.target.value = event.target.value.substring(0, 5).replace(/[^a-zA-Z]/gi, '')
-    });
-
-    const page = document.getElementById('all')
-    page.addEventListener('click', (event) => {
-        window.scrollTo(0, document.body.scrollHeight);
-        stopMoveCursor.focus();
-        var val = stopMoveCursor.value;
-        stopMoveCursor.value = '';
-        stopMoveCursor.value = val;
-    });
 });
 
 
@@ -66,9 +47,6 @@ function setInitialWord(word) {
         introText.remove();
         const inputElement = document.getElementById('word');
         inputElement.className = 'monster-input'
-        inputElement.blur();
-        window.scrollTo(0, 0);
-        inputElement.focus();
         addResult(gameState)
     } else {
         addError(gameState)
