@@ -17,6 +17,7 @@ const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 document.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     const wordInput = document.getElementById('word-input');
 
     window.addEventListener(
