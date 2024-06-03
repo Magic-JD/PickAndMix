@@ -343,6 +343,7 @@ main {
 }
 
 .keyboard {
+    user-select: none;
     background: var(--clr-highlight);
     height: 33vh;
     display: flex;
