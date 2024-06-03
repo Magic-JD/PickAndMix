@@ -360,6 +360,15 @@ main {
     justify-content: center;
 }
 
+
+.half-key {
+    display: flex;
+    background: var(--clr-highlight);
+    width: 4.5%;
+    height: 90%;
+    margin: 0.5%;
+}
+
 .key {
     border-radius: 10%;
     display: flex;
