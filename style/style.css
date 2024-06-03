@@ -20,9 +20,9 @@
 
 @media only screen and (max-width: 800px) {
     :root {
-    --fs-small: 1rem;
-    --fs-medium: 1.5rem;
-    --fs-large: 1.75rem;
+    --fs-small: 0.75rem;
+    --fs-medium: 1.2rem;
+    --fs-large: 1.5rem;
     --fs-extra-large: 3rem;
     --fs-monster: 6rem;
     }
