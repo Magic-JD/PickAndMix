@@ -37,6 +37,8 @@
     }
 }
 
+
+
 * Box sizing rules */
 *,
 *::before,
@@ -63,7 +65,7 @@ html:focus-within {
 }
 
 main {
-    padding-top: 70px;
+    padding-top: 3%;
 }
 
 /* Set core body defaults */
@@ -293,9 +295,9 @@ input:focus {
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding-bottom: 80px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .tagline {
@@ -343,4 +345,60 @@ main {
     position: absolute;
     z-index: -100;
     visibility: invisible;
+}
+
+.view {
+    height: 67vh;
+}
+
+.keyboard {
+    background: var(--clr-highlight);
+    height: 33vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyboard-row {
+    display: flex;
+    width: 100%;
+    height: 33%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.key {
+    border-radius: 10%;
+    display: flex;
+    color: var(--clr-text);
+    background: var(--clr-background);
+    width: 9%;
+    height: 90%;
+    margin: 1%;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-small);
+    font-family: var(--ff-body);
+}
+
+.big-key {
+    border-radius: 10%;
+    display: flex;
+    color: var(--clr-text);
+    background: var(--clr-background);
+    width: 14%;
+    height: 90%;
+    margin: 1%;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-small);
+    font-family: var(--ff-body);
+}
+
+
+@media only screen and (min-width: 800px) {
+    .keyboard {
+        display: none;
+    }
 }

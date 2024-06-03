@@ -17,32 +17,27 @@ const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('word-form');
+    const wordInput = document.getElementById('word-input');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const wordInput = document.getElementById('word').value;
-        useWord(wordInput);
-    });
+    window.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.keyCode == 13){
+                event.preventDefault();
+                word = wordInput.textContent;
+                wordInput.textContent = '';
+                useWord(word)
+            }
+        },
+        true,
+    );
 
-    const stopMoveCursor = document.getElementById('word');
-    stopMoveCursor.addEventListener('keydown', function(e){
-        if(e.keyCode == 37 || e.keyCode == 39)
-            e.preventDefault();
-    });
-
-    stopMoveCursor.addEventListener('keyup', function(e){
-        event.target.value = event.target.value.substring(0, 5).replace(/[^a-zA-Z]/gi, '')
-    });
-
-    const page = document.getElementById('all')
-    page.addEventListener('click', (event) => {
-        window.scrollTo(0, document.body.scrollHeight);
-        stopMoveCursor.focus();
-        var val = stopMoveCursor.value;
-        stopMoveCursor.value = '';
-        stopMoveCursor.value = val;
-    });
+    const enter = document.getElementById('ENTER');
+    enter.addEventListener('click', (event) => {
+        word = wordInput.textContent;
+        wordInput.textContent = '';
+        useWord(word)
+    }, true,);
 
     const btnEasy = document.getElementById('btn-easy')
     const btnMedium = document.getElementById('btn-medium')
@@ -69,8 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function useWord(userWord){
-    const input = document.getElementById('word')
-    input.value = '';
     word = userWord.toUpperCase();
     if(isFirstTurn){
         setInitialWord(word);
@@ -89,7 +82,7 @@ function setInitialWord(word) {
         addWordDiv(word);
         const introText = document.getElementById('heading');
         introText.remove();
-        const inputElement = document.getElementById('word');
+        const inputElement = document.getElementById('word-input');
         inputElement.className = 'monster-input'
         inputElement.blur();
         window.scrollTo(0, 0);
@@ -190,6 +183,7 @@ function countdownTime(){
     countdown = countdown - 1;
     if(countdown <= 0){
         clearInterval(intervalId);   
+        document.getElementById('keyboard').remove();
         const element = document.getElementById('interaction-space');
         element.className = 'text-large bold landing-text'
         const br1 = document.createElement('br');
