@@ -424,27 +424,27 @@ main {
 }
 
 .letter1 {
-    animation: oneA 10s linear 3s forwards;
+    animation: oneA 5s linear 2.5s forwards;
     width: 4vw;
 }
 .letter2 {
-    animation: twoA 2s linear 2s 1 forwards;
+    animation: twoA 1s linear 2s 1 forwards;
     width: 4vw;
 }
 .letter3 {
-    animation: threeA 2s linear 8s forwards;
+    animation: threeA 1s linear 5s forwards;
     width: 4vw;
 }
 .letter4 {
-    animation: fourA 3s linear 9s forwards;
+    animation: fourA 1.5s linear 5.5s forwards;
     width: 4vw;
 }
 .letter5 {
-    animation: fiveA 3s linear 6s forwards;
+    animation: fiveA 1.5s linear 4s forwards;
     width: 4vw;
 }
 .letter6 {
-    animation: sixA 10s linear 3s forwards;
+    animation: sixA 5s linear 2.5s forwards;
     width: 4vw;
     opacity: 0;
 }
