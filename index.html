@@ -2,15 +2,14 @@
 <html lang="en">
     <body class="background wrapper" id="mainBody">
         <head th:fragment="head">
-            <link rel="icon" href="style/favicon.ico" type="image/x-icon"/>
+            <link rel="icon" href="../style/favicon.ico" type="image/x-icon"/>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
             <title>Pick N Mix</title>
             <link href="style/style.css" rel="stylesheet"/>
             <script src="js/words.js"></script>
-            <script src="js/countdown.js"></script>
-            <script src="js/script.js"></script>
             <script src="js/keyboard.js"></script>
+            <script src="js/challenge.js"></script>
             <link href="https://fonts.googleapis.com" rel="preconnect">
             <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
             <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
@@ -24,9 +23,8 @@
                             Pick and Mix
                         </h1>
                         <p id="intro-text" class="landing-text text-small tagline">
-                        Mix up letters and find new five letter words!</br>
-                        </br>You can alway pick one letter to change...</br>
-                        <button id="start-button" class="button-small-dark" style="margin-top: 3vh;">Start</button>
+                        Get from word A to word B in as few steps as possible!</br>
+                        </br>Each step you can shuffle all the letters and pick one to change</br>
                         </p>
                         <div class="flex-stack">
                             <div class="letter">N</div>
@@ -41,21 +39,29 @@
                             </div>
                             <div class="letter">N</div>
                         </div>
-                        <div class="flex-container text-medium">
-                            <button id="btn-easy" class="button-small-dark">Easy</button>
-                            <button id="btn-medium" class="button-small-light">Medium</button>
-                            <button id="btn-hard" class="button-small-dark">Hard</button>
+                        <p id="intro-text" class="landing-text text-small tagline">
+                        </br >The two words will change every day</br>
+                        </br>There will always be a solution in 5 steps...</br>
+                        </p>
+                        <div class="flex-container">
+                            <button id="start-button" class="button-small-dark">Start</button>
+                            <a id="btn-challenge" class="button-small-dark" href="classic">Free Play</a>
                         </div>
-                        <a id="btn-challenge" class="button-small-dark" href="challenge">Daily Challenge</a>
                     </div>
                     <div id="interaction-space" class="text-medium monster">
                         <div class='flex-container'>
-                            <div id="score"></div>
+                            <div id="score" style="margin-bottom: 20px"></div>
                         </div>
                         <div id="attacher"></div>
-                        <div class='flex-container'>
-                            <div id="last-word"></div>
-                            <div class="right-pushed" id="countdown"></div>
+                        <div class='flex-container' id="playing" style="display: none;">
+                            <div class='flex-stack'>
+                                <div class="text-small">Last word:</div>
+                                <div class="text-medium" id="last-word"></div>
+                            </div>
+                            <div class='flex-stack right-pushed'>
+                                <div class="text-small">Target word:</div>
+                                <div class="text-medium" id="goal-word"></div>
+                            </div>
                         </div>
                         <div class="base-input" id="word-input"></div>
                         <div id="last-message"></div>

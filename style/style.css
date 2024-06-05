@@ -230,8 +230,7 @@ input:focus {
   color: var(--clr-text);
   border: none;
   padding: 2px 7px;
-  margin: 5px 20px;
-  margin-bottom: 20px;
+  margin: 5vh 5vw 5vh 5vw;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -247,8 +246,7 @@ input:focus {
   color: var(--clr-background);
   border: none;
   padding: 2px 7px;
-  margin: 5px 20px;
-  margin-bottom: 20px;
+  margin: 5vh 5vw 5vh 5vw;
   text-align: center;
   text-decoration: none;
   display: inline-block;
