@@ -403,3 +403,127 @@ main {
         display: none;
     }
 }
+
+.animation-holder {
+    font-size: var(--fs-large);
+    font-family: var(--ff-body);
+    color: var(--clr-text);
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.letter {
+    opacity: 0;
+    width: 4vw;
+    font-size: var(--fs-large);
+    font-family: var(--ff-body);
+}
+
+.letter1 {
+    animation: oneA 10s linear 3s forwards;
+    width: 4vw;
+}
+.letter2 {
+    animation: twoA 2s linear 2s 1 forwards;
+    width: 4vw;
+}
+.letter3 {
+    animation: threeA 2s linear 8s forwards;
+    width: 4vw;
+}
+.letter4 {
+    animation: fourA 3s linear 9s forwards;
+    width: 4vw;
+}
+.letter5 {
+    animation: fiveA 3s linear 6s forwards;
+    width: 4vw;
+}
+.letter6 {
+    animation: sixA 10s linear 3s forwards;
+    width: 4vw;
+    opacity: 0;
+}
+
+@keyframes oneA{
+    10% {
+        transform: translate(0%, 100%);
+        content: "S";
+    }
+    35% {
+        transform: translate(400%, 100%);
+    }
+    45% {
+        transform: translate(400%, 0%);
+    }
+    90% {
+        transform: translate(400%, 0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(400%, 0%);
+        opacity: 0;
+    }
+}
+
+
+@keyframes twoA{
+    25% {
+        transform: translate(0%, -100%);
+    }
+    75% {
+        transform: translate(-100%, -100%);
+    }
+    100% {
+        transform: translate(-100%, 0%);
+    }
+}
+
+@keyframes threeA{
+    33% {
+        transform: translate(0%, 100%);
+    }
+    66% {
+        transform: translate(100%, 100%);
+    }
+    100% {
+        transform: translate(100%, 0%);
+    }
+}
+@keyframes fourA{
+    33% {
+        transform: translate(0%, -100%);
+    }
+    66% {
+        transform: translate(-200%, -100%);
+    }
+    100% {
+        transform: translate(-200%, 0%);
+    }
+}
+@keyframes fiveA{
+    20% {
+        transform: translate(0%, -100%);
+    }
+    80% {
+        transform: translate(-200%, -100%);
+    }
+    100% {
+        transform: translate(-200%, 0%);
+    }
+}
+
+@keyframes sixA{
+    90% {
+        transform: translate(-100%, 0%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-100%, 0%);
+        opacity: 1;
+    }
+}
