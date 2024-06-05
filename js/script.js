@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
-        useWord(words[Math.floor(Math.random() * words.length)]);
+        useWord(cleanedWords[Math.floor(Math.random() * cleanedWords.length)]);
     });
 });
 
