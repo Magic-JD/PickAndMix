@@ -146,15 +146,21 @@ function endGame(){
     const gameOver = document.createElement('div');
     const finalScore = document.createElement('div');
     const refreshButton = document.createElement('button');
+    const classicButton = document.createElement('button');
     refreshButton.className = 'button';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { window.location.reload() });
+    classicButton.className = 'button';
+    classicButton.textContent = "Free Play"
+    classicButton.addEventListener("click", (event) => { 
+        window.location.href = '../classic'; 
+    });
     const wordList = document.createElement('div');
     wordList.className = 'end-stack'
     gameOver.textContent = 'GAME OVER - ' + (lastWord == goalWord ? 'YOU WIN' : 'BETTER LUCK NEXT TIME' );
     finalScore.textContent = 'Final Score: ' + currentScore;
     wordList.textContent = 'Choices:';
-    element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, br3, wordList);
+    element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, classicButton, br3, wordList);
 
     previousWords.forEach(value => {
         const preWordDiv = document.createElement('div');
