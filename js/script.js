@@ -1,10 +1,6 @@
 let lastWord = "";
 let currentScore = 0;
 let isFirstTurn = true;
-let countdown = 60;
-let intervalId = null;
-let multi = 2;
-let minTime = 8;
 
 const previousWords = new Set();
 
@@ -15,28 +11,6 @@ const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const wordInput = document.getElementById('word-input');
-
-    window.addEventListener(
-        "keydown",
-        (event) => {
-            if (event.keyCode == 13){
-                event.preventDefault();
-                word = wordInput.textContent;
-                wordInput.textContent = '';
-                useWord(word)
-            }
-        },
-        true,
-    );
-
-    const enter = document.getElementById('ENTER');
-    enter.addEventListener('click', (event) => {
-        word = wordInput.textContent;
-        wordInput.textContent = '';
-        useWord(word)
-    }, true,);
-
     const btnEasy = document.getElementById('btn-easy')
     const btnMedium = document.getElementById('btn-medium')
     const btnHard = document.getElementById('btn-hard')
@@ -169,80 +143,43 @@ function addError(error){
     attacher.replaceChildren(errorMessage);
 }
 
-function startCountdown(){
-    addCurrentTime();
-    intervalId = setInterval(countdownTime, 1000);
-}
+function endGame(){
+    document.getElementById('keyboard').remove();
+    const element = document.getElementById('interaction-space');
+    element.className = 'text-large bold landing-text'
+    const br1 = document.createElement('br');
+    const br2 = document.createElement('br');
+    const br3 = document.createElement('br');
+    const gameOver = document.createElement('div');
+    const finalScore = document.createElement('div');
+    const refreshButton = document.createElement('button');
+    refreshButton.className = 'button';
+    refreshButton.textContent = "Try Again"
+    refreshButton.addEventListener("click", (event) => { window.location.reload() });
+    const listHolder = document.createElement('div');
+    listHolder.className = 'end-container text-large'
+    const options = document.createElement('div');
+    options.className = 'end-stack right-pushed'
+    const wordList = document.createElement('div');
+    wordList.className = 'end-stack'
+    listHolder.replaceChildren(wordList, options);
+    gameOver.textContent = 'GAME OVER';
+    finalScore.textContent = 'Final Score: ' + currentScore;
+    wordList.textContent = 'Choices:';
+    options.textContent = 'For ' + lastWord + ':';
+    element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, br3);
+    element.parentNode.insertAdjacentElement("afterend", listHolder)
 
-function countdownTime(){
-    countdown = countdown - 1;
-    if(countdown <= 0){
-        clearInterval(intervalId);   
-        document.getElementById('keyboard').remove();
-        const element = document.getElementById('interaction-space');
-        element.className = 'text-large bold landing-text'
-        const br1 = document.createElement('br');
-        const br2 = document.createElement('br');
-        const br3 = document.createElement('br');
-        const gameOver = document.createElement('div');
-        const finalScore = document.createElement('div');
-        const refreshButton = document.createElement('button');
-        refreshButton.className = 'button';
-        refreshButton.textContent = "Try Again"
-        refreshButton.addEventListener("click", (event) => { window.location.reload() });
-        const listHolder = document.createElement('div');
-        listHolder.className = 'end-container text-large'
-        const options = document.createElement('div');
-        options.className = 'end-stack right-pushed'
-        const wordList = document.createElement('div');
-        wordList.className = 'end-stack'
-        listHolder.replaceChildren(wordList, options);
-        gameOver.textContent = 'GAME OVER';
-        finalScore.textContent = 'Final Score: ' + currentScore;
-        wordList.textContent = 'Choices:';
-        options.textContent = 'For ' + lastWord + ':';
-        element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, br3);
-        element.parentNode.insertAdjacentElement("afterend", listHolder)
-
-        previousWords.forEach(value => {
-            const preWordDiv = document.createElement('div');
-            preWordDiv.textContent = value;
-            preWordDiv.className = 'text-large';
-            wordList.appendChild(preWordDiv);
-        });
-        calculateNextPossibilities(lastWord).forEach(value => {
-            const possWordDiv = document.createElement('div');
-            possWordDiv.textContent = value;
-            possWordDiv.className = 'text-large';
-            options.appendChild(possWordDiv);
-        })
-
-    } else {
-        addCurrentTime();
-    }
-}
-
-function addCurrentTime(){
-    const cd = document.getElementById('countdown')
-    cd.textContent = countdown + 's'
-}
-
-function resetCountdown(){
-    countdown = Math.max(60 - (currentScore * multi), countdown, minTime);
-    addCurrentTime()
-}
-
-function setDiff(number){
-    if(number == 1){
-        multi = 0;
-        minTime = 60;
-    }
-    if(number == 2){
-        multi = 2;
-        minTime = 8;
-    }
-    if (number == 3){
-        multi = 5;
-        minTime = 5;
-    }
+    previousWords.forEach(value => {
+        const preWordDiv = document.createElement('div');
+        preWordDiv.textContent = value;
+        preWordDiv.className = 'text-large';
+        wordList.appendChild(preWordDiv);
+    });
+    calculateNextPossibilities(lastWord).forEach(value => {
+        const possWordDiv = document.createElement('div');
+        possWordDiv.textContent = value;
+        possWordDiv.className = 'text-large';
+        options.appendChild(possWordDiv);
+    })
 }

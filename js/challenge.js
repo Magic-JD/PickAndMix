@@ -11,31 +11,6 @@ const ALREADY_CHOSEN = "You have already used this word.";
 const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const wordInput = document.getElementById('word-input');
-
-    window.addEventListener(
-        "keydown",
-        (event) => {
-            if (event.keyCode == 13){
-                event.preventDefault();
-                word = wordInput.textContent;
-                wordInput.textContent = '';
-                useWord(word)
-            }
-        },
-        true,
-    );
-
-    const enter = document.getElementById('ENTER');
-    enter.addEventListener('click', (event) => {
-        word = wordInput.textContent;
-        wordInput.textContent = '';
-        useWord(word)
-    }, true,);
-});
-
-
 function useWord(userWord){
     word = userWord.toUpperCase();
     if(isFirstTurn){

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('word-input');
     input.focus();
@@ -33,5 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const back = document.getElementById('BACK');
     back.addEventListener('click', (event) => {
         input.textContent = input.textContent.length == 0 ? '' : input.textContent.slice(0, -1);
+    }, true,);
+
+    window.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.keyCode == 13){
+                event.preventDefault();
+                word = input.textContent;
+                input.textContent = '';
+                useWord(word)
+            }
+        },
+        true,
+    );
+    const enter = document.getElementById('ENTER');
+    enter.addEventListener('click', (event) => {
+        word = input.textContent;
+        input.textContent = '';
+        useWord(word)
     }, true,);
 });
