@@ -11,6 +11,18 @@ const ALREADY_CHOSEN = "You have already used this word.";
 const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnStart = document.getElementById('start-button')
+    btnStart.addEventListener('click', (event) => {
+        if(window.innerWidth < 800){
+            const keyboard = document.getElementById('keyboard');
+            keyboard.style.display = 'flex';
+        }
+        useWord(lastWord);
+    });
+});
+
 function useWord(userWord){
     word = userWord.toUpperCase();
     if(isFirstTurn){
@@ -21,7 +33,6 @@ function useWord(userWord){
 }
 
 function setInitialWord(word) {
-    word = lastWord;
     const gameState = validateWord(word, previousWords);
     if (gameState === VALID) {
         const playing = document.getElementById('playing');
