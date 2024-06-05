@@ -238,6 +238,7 @@ input:focus {
   font-size: var(--fs-small);
   font-family: var(--ff-body);
   border-radius: 8px;
+  width: 25vw;
   transition-duration: 0.4s;
 }
 
@@ -254,6 +255,7 @@ input:focus {
   font-size: var(--fs-small);
   font-family: var(--ff-body);
   border-radius: 8px;
+  width: 25vw;
   transition-duration: 0.4s;
 }
 .button:hover {
