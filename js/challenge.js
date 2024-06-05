@@ -24,6 +24,8 @@ function setInitialWord(word) {
     word = lastWord;
     const gameState = validateWord(word, previousWords);
     if (gameState === VALID) {
+        const playing = document.getElementById('playing');
+        playing.style.display = 'flex';
         previousWords.add(word);
         lastWord = word;
         isFirstTurn = false;
@@ -105,12 +107,12 @@ function addResult(content) {
     const element = document.getElementById('last-message');
     element.textContent = content;
     const goal = document.getElementById('goal-word');
-    goal.textContent = 'Target word: ' + goalWord;
+    goal.textContent = goalWord;
 }
 
 function addWordDiv(word){
     const lastWordDiv = document.getElementById('last-word');
-    lastWordDiv.textContent = 'Last word: ' + word;
+    lastWordDiv.textContent = word;
     const scoreCount = document.getElementById('score');
     scoreCount.textContent = 'Steps: ' + (currentScore <= 0 ? '' : currentScore);
 }

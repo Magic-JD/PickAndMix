@@ -30,12 +30,18 @@
                     </div>
                     <div id="interaction-space" class="text-medium monster">
                         <div class='flex-container'>
-                            <div id="score"></div>
+                            <div id="score" style="margin-bottom: 20px"></div>
                         </div>
                         <div id="attacher"></div>
-                        <div class='flex-container'>
-                            <div class="text-small" id="last-word"></div>
-                            <div class="right-pushed text-small" id="goal-word"></div>
+                        <div class='flex-container' id="playing" style="display: none;">
+                            <div class='flex-stack'>
+                                <div class="text-small">Last word:</div>
+                                <div class="text-medium" id="last-word"></div>
+                            </div>
+                            <div class='flex-stack right-pushed'>
+                                <div class="text-small">Target word:</div>
+                                <div class="text-medium" id="goal-word"></div>
+                            </div>
                         </div>
                         <div class="base-input" id="word-input"></div>
                         <div id="last-message"></div>
