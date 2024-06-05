@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btnHard.className = "button-small-light"
     });
     btnStart.addEventListener('click', (event) => {
-        const keyboard = document.getElementById('keyboard');
-        keyboard.style.display = 'flex';
+        if(window.innerWidth < 800){
+            const keyboard = document.getElementById('keyboard');
+            keyboard.style.display = 'flex';
+        }
         useWord(words[Math.floor(Math.random() * words.length)]);
     });
 });
