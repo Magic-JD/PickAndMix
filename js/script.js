@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnEasy = document.getElementById('btn-easy')
     const btnMedium = document.getElementById('btn-medium')
     const btnHard = document.getElementById('btn-hard')
+    const btnStart = document.getElementById('start-button')
     btnEasy.addEventListener('click', (event) => {
         setDiff(1);
         btnEasy.className = "button-small-light"
@@ -31,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btnEasy.className = "button-small-dark"
         btnMedium.className = "button-small-dark"
         btnHard.className = "button-small-light"
+    });
+    btnStart.addEventListener('click', (event) => {
+        const keyboard = document.getElementById('keyboard');
+        keyboard.style.display = 'flex';
+        useWord(words[Math.floor(Math.random() * words.length)]);
     });
 });
 
