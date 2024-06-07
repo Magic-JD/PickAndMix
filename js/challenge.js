@@ -1,5 +1,5 @@
-let lastWord = "TABLE";
-let goalWord = "WHISK";
+let lastWord = "CRISP";
+let goalWord = "MELON";
 let currentScore = 0;
 let isFirstTurn = true;
 
