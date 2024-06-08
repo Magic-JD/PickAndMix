@@ -177,7 +177,10 @@ function addError(error){
 }
 
 function endGame(){
-    Cookies.set('chosen-words', [...previousWords].join(','))
+    const midnight = new Date();
+    midnight.setDate(midnight.getDate() + 1);
+    midnight.setHours(0,0,0,0);
+    Cookies.set('chosen-words', [...previousWords].join(','), { expires: midnight })
     const keyboard = document.getElementById('keyboard').remove();
     const element = document.getElementById('interaction-space');
     element.className = 'text-large bold landing-text'
