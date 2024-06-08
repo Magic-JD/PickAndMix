@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
+        if(!Cookies.get("startTime")){
+            const midnight = new Date();
+            midnight.setDate(midnight.getDate() + 1);
+            midnight.setHours(0,0,0,0);
+            Cookies.set("startTime", new Date().getTime(), {expires: midnight});
+        }
         useWord(lastWord);
     });
     const btnBack = document.getElementById('back-button')
@@ -207,12 +213,15 @@ function endGame(){
     const buttons = document.createElement('div');
     const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
+    const timeToFinish = document.createElement('div');
+    timeToFinish.className = 'text-small'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
     refreshButton.className = 'button-small-dark';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { 
         Cookies.remove('chosen-words')
+        Cookies.remove('endTime')
         window.location.reload();
     });
     classicButton.className = 'button-small-dark';
@@ -224,10 +233,18 @@ function endGame(){
     wordList.className = 'end-stack'
     buttons.className = 'end-stack'
     stacks.className = 'end-container'
-    buttons.replaceChildren(finalScore, br2, refreshButton, classicButton);
-        stacks.replaceChildren(wordList, buttons);
+    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton);
+    stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
     finalScore.textContent = 'Score: ' + currentScore;
+    if(!Cookies.get('endTime')){
+        Cookies.set('endTime', new Date().getTime(), {expires: midnight});
+    }
+    let time = Cookies.get('endTime') - Cookies.get('startTime')
+    let seconds = Math.trunc(time/1000);
+    let minutes = Math.trunc(seconds/60);
+    let remainingSeconds = seconds % minutes;
+    timeToFinish.textContent = 'Completed in: ' + minutes + 'm ' + remainingSeconds + 's';
     wordList.textContent = 'Choices:';
     element.replaceChildren(gameOver, br1, stacks);
 
