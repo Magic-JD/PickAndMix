@@ -452,106 +452,197 @@ main {
 }
 
 .letter1 {
-    animation: oneA 5s linear 2.5s forwards;
+    animation: oneA 12s linear infinite forwards;
     width: 4vw;
 }
 .letter2 {
-    animation: twoA 1s linear 2s 1 forwards;
+    animation: twoA 12s linear infinite forwards;
     width: 4vw;
 }
 .letter3 {
-    animation: threeA 1s linear 5s forwards;
+    animation: threeA 12s linear infinite forwards;
     width: 4vw;
 }
 .letter4 {
-    animation: fourA 1.5s linear 5.5s forwards;
+    animation: fourA 12s linear infinite forwards;
     width: 4vw;
 }
 .letter5 {
-    animation: fiveA 1.5s linear 4s forwards;
+    animation: fiveA 12s linear infinite forwards;
     width: 4vw;
 }
 .letter6 {
-    animation: sixA 5s linear 2.5s forwards;
+    animation: sixA 12s linear infinite forwards;
     width: 4vw;
     opacity: 0;
 }
 
 @keyframes oneA{
-    10% {
-        transform: translate(0%, 100%);
-        content: "S";
+    15%{
+        transform: translate(0%, 0%);
     }
-    35% {
+    17% {
+        transform: translate(0%, 100%);
+    }
+    25% {
         transform: translate(400%, 100%);
     }
-    45% {
+    27% {
         transform: translate(400%, 0%);
     }
-    90% {
+    40% {
         transform: translate(400%, 0%);
         opacity: 1;
     }
-    100% {
+    45% {
         transform: translate(400%, 0%);
         opacity: 0;
+    }
+    95% {
+        transform:  translate(0%, 0%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
 
 @keyframes twoA{
-    25% {
+    10% {
+        transform: translate(0%, 0%);
+    }
+    12% {
         transform: translate(0%, -100%);
     }
-    75% {
+    15% {
         transform: translate(-100%, -100%);
     }
-    100% {
+    17% {
         transform: translate(-100%, 0%);
+    }
+    85% {
+        transform: translate(-100%, 0%);
+    }
+    88% {
+        transform: translate(-100%, -100%);
+    }
+    90% {
+        transform: translate(0%, -100%);
+    }
+    93% {
+        transform: translate(0%, 0%);
     }
 }
 
 @keyframes threeA{
+    30% {
+        transform: translate(0%, 0%);
+    }
     33% {
         transform: translate(0%, 100%);
     }
-    66% {
+    36% {
         transform: translate(100%, 100%);
     }
-    100% {
+    40% {
         transform: translate(100%, 0%);
+    }
+    60% {
+        transform: translate(100%, 0%);
+    }
+    63% {
+        transform: translate(100%, 100%);
+    }
+    66% {
+        transform: translate(0%, 100%);
+    }
+    70% {
+        transform: translate(0%, 0%);
     }
 }
 @keyframes fourA{
-    33% {
+    35% {
+        transform: translate(0%, 0%);
+    }
+    38% {
         transform: translate(0%, -100%);
     }
-    66% {
+    42% {
         transform: translate(-200%, -100%);
     }
-    100% {
+    45% {
         transform: translate(-200%, 0%);
+    }
+    55% {
+        transform: translate(-200%, 0%);
+    }
+    58% {
+        transform: translate(-200%, -100%);
+    }
+    62% {
+        transform: translate(0%, -100%);
+    }
+    65% {
+        transform: translate(0%, 0%);
     }
 }
+
 @keyframes fiveA{
-    20% {
+    23% {
+        transform: translate(0%, 0%);
+    }
+    27%{
         transform: translate(0%, -100%);
     }
-    80% {
+    30% {
         transform: translate(-200%, -100%);
     }
-    100% {
+    33% {
         transform: translate(-200%, 0%);
+    }
+    66% {
+        transform: translate(-200%, 0%);
+    }
+    70% {
+        transform: translate(-200%, -100%);
+    }
+    73%{
+        transform: translate(0%, -100%);
+    }
+    75% {
+        transform: translate(0%, 0%);
     }
 }
 
 @keyframes sixA{
-    90% {
+    40% {
         transform: translate(-100%, 0%);
         opacity: 0;
     }
-    100% {
+    45% {
         transform: translate(-100%, 0%);
         opacity: 1;
+    }
+    73% {
+        transform: translate(-100%, 0%);
+    }
+    75% {
+        transform: translate(-100%, 100%);
+    }
+    85% {
+        transform: translate(-500%, 100%);
+    }
+    87% {
+        transform: translate(-500%, 0%);
+        opacity:1;
+    }
+    95% {
+        transform: translate(-500%, 0%);
+        opacity:1;
+    }
+    100%{
+        transform: translate(-500%, 0%);
+        opacity: 0;
     }
 }
