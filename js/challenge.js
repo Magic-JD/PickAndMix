@@ -9,7 +9,7 @@ if(language == 'undefined'){
 }
 
 
-const previousWords = new Set();
+let previousWords = new Set();
 
 const VALID = "";
 const NOT_A_WORD = "This is not a recognised word.";
@@ -19,8 +19,17 @@ const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 document.addEventListener('DOMContentLoaded', () => {
     const btnLanguage = document.getElementById('language-button');
-    const btnImage = document.getElementById('language-image');
     setLanguage(language);
+    let choWords = Cookies.get('chosen-words');
+    if(choWords){
+        lastWord = goalWord;
+        previousWords = new Set(choWords.split(','))
+        currentScore = previousWords.size - 1;
+        initGameStage(lastWord);
+        endGame();
+        return;
+    }
+    const btnImage = document.getElementById('language-image');
     btnImage.src = language == 'en' ? 'style/gb.png' : 'style/id.png';
     btnLanguage.addEventListener('click', (event) => {
         if(language == 'en'){
@@ -36,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
-        btnLanguage.remove();
         useWord(lastWord);
     });
 });
@@ -59,19 +67,24 @@ function useWord(userWord){
     }
 }
 
+function initGameStage(word){
+    const playing = document.getElementById('playing');
+    document.getElementById('language-button').remove();
+    playing.style.display = 'flex';
+    previousWords.add(word);
+    lastWord = word;
+    isFirstTurn = false;
+    addWordDiv(word);
+    const introText = document.getElementById('heading');
+    introText.remove();
+    const inputElement = document.getElementById('word-input');
+    inputElement.className = 'monster-input'
+}
+
 function setInitialWord(word) {
     const gameState = validateWord(word, previousWords);
     if (gameState === VALID) {
-        const playing = document.getElementById('playing');
-        playing.style.display = 'flex';
-        previousWords.add(word);
-        lastWord = word;
-        isFirstTurn = false;
-        addWordDiv(word);
-        const introText = document.getElementById('heading');
-        introText.remove();
-        const inputElement = document.getElementById('word-input');
-        inputElement.className = 'monster-input'
+        initGameStage(word)
         addResult(gameState)
     } else {
         addError(gameState)
@@ -164,6 +177,7 @@ function addError(error){
 }
 
 function endGame(){
+    Cookies.set('chosen-words', [...previousWords].join(','))
     const keyboard = document.getElementById('keyboard').remove();
     const element = document.getElementById('interaction-space');
     element.className = 'text-large bold landing-text'
@@ -176,7 +190,10 @@ function endGame(){
     const classicButton = document.createElement('button');
     refreshButton.className = 'button';
     refreshButton.textContent = "Try Again"
-    refreshButton.addEventListener("click", (event) => { window.location.reload() });
+    refreshButton.addEventListener("click", (event) => { 
+        Cookies.remove('chosen-words')
+        window.location.reload();
+    });
     classicButton.className = 'button';
     classicButton.textContent = "Free Play"
     classicButton.addEventListener("click", (event) => { 
@@ -184,7 +201,7 @@ function endGame(){
     });
     const wordList = document.createElement('div');
     wordList.className = 'end-stack'
-    gameOver.textContent = 'GAME OVER - ' + (lastWord == goalWord ? 'YOU WIN' : 'BETTER LUCK NEXT TIME' );
+    gameOver.textContent = 'GAME OVER - YOU WIN';
     finalScore.textContent = 'Final Score: ' + currentScore;
     wordList.textContent = 'Choices:';
     element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, classicButton, br3, wordList);
