@@ -740,7 +740,7 @@ dateToChallengeIndonesian['2025-06-07'] = {startWord: 'CALON', endWord: 'PETIR'}
 
 
 
-let currentDate = new Date().toISOString().split('T')[0];
+let currentDate = getDateString();
 let words = englishWords;
 let cleanedWords = cleanedEnglishWords;
 let wordObject = dateToChallengeEnglish[currentDate];
@@ -748,7 +748,7 @@ let startWord = wordObject.startWord;
 let endWord = wordObject.endWord;
 
 function changeLanguage(lang){
-    currentDate = new Date().toISOString().split('T')[0];
+    currentDate = getDateString();
     if(lang == 'en'){
         words = englishWords;
         cleanedWords = cleanedEnglishWords;
@@ -763,3 +763,8 @@ function changeLanguage(lang){
     endWord = wordObject.endWord;
 }
 
+function getDateString(){
+    let d = new Date();
+    d.setUTCFullYear(d.getFullYear(), d.getMonth(), d.getDate());
+    return d.toISOString().split('T')[0];
+}
