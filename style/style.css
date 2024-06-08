@@ -224,6 +224,18 @@ input:focus {
   transition-duration: 0.4s;
 }
 
+.back-button {
+  background-color: var(--clr-highlight);
+  color: var(--clr-text);
+  border: none;
+  padding: 2px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--fs-medium);
+  font-family: var(--ff-body);
+  border-radius: 8px;
+}
 
 .language-button {
   background-color: var(--clr-background);

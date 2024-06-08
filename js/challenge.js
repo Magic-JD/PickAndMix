@@ -47,6 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         useWord(lastWord);
     });
+    const btnBack = document.getElementById('back-button')
+    btnBack.addEventListener('click', (event) => {
+        goBack();
+    });
 });
 
 function setLanguage(lang){
@@ -68,9 +72,9 @@ function useWord(userWord){
 }
 
 function initGameStage(word){
-    const playing = document.getElementById('playing');
+    const playing = document.getElementById('interaction-space');
     document.getElementById('language-button').remove();
-    playing.style.display = 'flex';
+    playing.style.display = 'block';
     previousWords.add(word);
     lastWord = word;
     isFirstTurn = false;
@@ -79,6 +83,17 @@ function initGameStage(word){
     introText.remove();
     const inputElement = document.getElementById('word-input');
     inputElement.className = 'monster-input'
+}
+
+function goBack(){
+    previousWords.delete(lastWord);
+    currentScore = currentScore - 1;
+    if(previousWords.size == 0){
+        window.location.reload();
+    } else {
+        lastWord = [...previousWords].pop();
+        addWordDiv(lastWord);
+    }
 }
 
 function setInitialWord(word) {
