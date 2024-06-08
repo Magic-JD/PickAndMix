@@ -204,26 +204,32 @@ function endGame(){
     const br2 = document.createElement('br');
     const br3 = document.createElement('br');
     const gameOver = document.createElement('div');
+    const buttons = document.createElement('div');
+    const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
-    refreshButton.className = 'button';
+    refreshButton.className = 'button-small-dark';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { 
         Cookies.remove('chosen-words')
         window.location.reload();
     });
-    classicButton.className = 'button';
+    classicButton.className = 'button-small-dark';
     classicButton.textContent = "Free Play"
     classicButton.addEventListener("click", (event) => { 
         window.location.href = '../classic'; 
     });
     const wordList = document.createElement('div');
     wordList.className = 'end-stack'
-    gameOver.textContent = 'GAME OVER - YOU WIN';
+    buttons.className = 'end-stack'
+    stacks.className = 'end-container'
+    buttons.replaceChildren(finalScore, br2, refreshButton, classicButton);
+        stacks.replaceChildren(wordList, buttons);
+    gameOver.textContent = 'Congratulations!';
     finalScore.textContent = 'Final Score: ' + currentScore;
     wordList.textContent = 'Choices:';
-    element.replaceChildren(gameOver, br1, finalScore, br2, refreshButton, classicButton, br3, wordList);
+    element.replaceChildren(gameOver, br1, stacks);
 
     previousWords.forEach(value => {
         const preWordDiv = document.createElement('div');

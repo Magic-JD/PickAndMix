@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('word-input');
-    input.focus();
     window.addEventListener(
         "keydown",
         (event) => {
             event.preventDefault();
-            if (event.keyCode >= 65 && event.keyCode <= 90 && input.textContent.length < 5){
+            if (event.keyCode >= 65 && event.keyCode <= 90 && input.textContent.length < 5 && !isFirstTurn){
                 event.preventDefault();
                 input.textContent += event.key;
             } else if (event.keyCode == 8){
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener(
         "keydown",
         (event) => {
-            if (event.keyCode == 13){
+            if (event.keyCode == 13 && !isFirstTurn){
                 event.preventDefault();
                 word = input.textContent;
                 input.textContent = '';
