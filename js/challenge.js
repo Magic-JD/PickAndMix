@@ -1,7 +1,8 @@
-let lastWord = "CHAIR";
-let goalWord = "POETS";
+let lastWord = startWord;
+let goalWord = endWord;
 let currentScore = 0;
 let isFirstTurn = true;
+let language = 'en';
 
 const previousWords = new Set();
 
@@ -13,12 +14,27 @@ const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    const btnLanguage = document.getElementById('language-button');
+    const btnImage = document.getElementById('language-image');
+    btnLanguage.addEventListener('click', (event) => {
+        if(language == 'en'){
+            language = 'id';
+            btnImage.src = 'style/id.png';
+        } else if(language == 'id'){
+            language = 'en';
+            btnImage.src = 'style/gb.png';
+        }
+        changeLanguage(language);
+        lastWord = startWord;
+        goalWord = endWord;
+    });
     const btnStart = document.getElementById('start-button')
     btnStart.addEventListener('click', (event) => {
         if(window.innerWidth < 800){
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
+        btnLanguage.remove();
         useWord(lastWord);
     });
 });

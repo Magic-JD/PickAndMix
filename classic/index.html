@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <body class="background wrapper" id="mainBody">
-        <head th:fragment="head">
+        <head>
             <link rel="icon" href="style/favicon.ico" type="image/x-icon"/>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
@@ -17,7 +17,9 @@
         </head>
         <main id='all'>
             <div id="view" class="view">
-                <div class="top-padding"></div>
+                <div class="flex-container">
+                    <button id='language-button' class="language-button right-pushed"><img id='language-image' src="../style/gb.png" class=right-pushed/></button>
+                </div>
                 <div class=flex-stack>
                     <div id="heading" class="heading">
                         <h1 class="landing-text text-xl">

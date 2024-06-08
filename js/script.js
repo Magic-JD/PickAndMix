@@ -1,6 +1,7 @@
 let lastWord = "";
 let currentScore = 0;
 let isFirstTurn = true;
+let language = 'en'
 
 const previousWords = new Set();
 
@@ -33,11 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
         btnMedium.className = "button-small-dark"
         btnHard.className = "button-small-light"
     });
+    const btnLanguage = document.getElementById('language-button');
+    const btnImage = document.getElementById('language-image');
+    btnLanguage.addEventListener('click', (event) => {
+        if(language == 'en'){
+            language = 'id';
+            btnImage.src = '../style/id.png';
+        } else if(language == 'id'){
+            language = 'en';
+            btnImage.src = '../style/gb.png';
+        }
+        changeLanguage(language);
+    });
     btnStart.addEventListener('click', (event) => {
         if(window.innerWidth < 800){
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
+        btnLanguage.remove();
         useWord(cleanedWords[Math.floor(Math.random() * cleanedWords.length)]);
     });
 });
