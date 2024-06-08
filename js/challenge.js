@@ -226,7 +226,7 @@ function endGame(){
     stacks.className = 'end-container'
     buttons.replaceChildren(finalScore, br2, refreshButton, classicButton);
         stacks.replaceChildren(wordList, buttons);
-    gameOver.textContent = 'Congratulations!';
+    gameOver.textContent = '🎉 Congratulations! 🎉';
     finalScore.textContent = 'Score: ' + currentScore;
     wordList.textContent = 'Choices:';
     element.replaceChildren(gameOver, br1, stacks);
