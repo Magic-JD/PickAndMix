@@ -2,7 +2,12 @@ let lastWord = startWord;
 let goalWord = endWord;
 let currentScore = 0;
 let isFirstTurn = true;
-let language = 'en';
+let language = Cookies.get('lang');
+
+if(language == 'undefined'){
+    language = 'en'
+}
+
 
 const previousWords = new Set();
 
@@ -12,21 +17,18 @@ const ALREADY_CHOSEN = "You have already used this word.";
 const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const btnLanguage = document.getElementById('language-button');
     const btnImage = document.getElementById('language-image');
+    setLanguage(language);
+    btnImage.src = language == 'en' ? 'style/gb.png' : 'style/id.png';
     btnLanguage.addEventListener('click', (event) => {
         if(language == 'en'){
-            language = 'id';
-            btnImage.src = 'style/id.png';
+            setLanguage('id');
         } else if(language == 'id'){
-            language = 'en';
-            btnImage.src = 'style/gb.png';
+            setLanguage('en');
         }
-        changeLanguage(language);
-        lastWord = startWord;
-        goalWord = endWord;
+        btnImage.src = language == 'en' ? 'style/gb.png' : 'style/id.png';
     });
     const btnStart = document.getElementById('start-button')
     btnStart.addEventListener('click', (event) => {
@@ -38,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
         useWord(lastWord);
     });
 });
+
+function setLanguage(lang){
+    language = lang;
+    Cookies.set('lang', lang)
+    changeLanguage(language);
+    lastWord = startWord;
+    goalWord = endWord;
+}
+
 
 function useWord(userWord){
     word = userWord.toUpperCase();

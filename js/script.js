@@ -1,7 +1,11 @@
 let lastWord = "";
 let currentScore = 0;
 let isFirstTurn = true;
-let language = 'en'
+let language = Cookies.get('lang');
+
+if(language == 'undefined'){
+    language = 'en'
+}
 
 const previousWords = new Set();
 
@@ -36,15 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const btnLanguage = document.getElementById('language-button');
     const btnImage = document.getElementById('language-image');
+    setLanguage(language);
+    btnImage.src = language == 'en' ? '../style/gb.png' : '../style/id.png';
     btnLanguage.addEventListener('click', (event) => {
         if(language == 'en'){
-            language = 'id';
-            btnImage.src = '../style/id.png';
+            setLanguage('id');
         } else if(language == 'id'){
-            language = 'en';
-            btnImage.src = '../style/gb.png';
+            setLanguage('en');
         }
-        changeLanguage(language);
+        btnImage.src = language == 'en' ? '../style/gb.png' : '../style/id.png';
     });
     btnStart.addEventListener('click', (event) => {
         if(window.innerWidth < 800){
@@ -56,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function setLanguage(lang){
+    language = lang;
+    Cookies.set('lang', lang)
+    changeLanguage(language);
+}
 
 function useWord(userWord){
     word = userWord.toUpperCase();
