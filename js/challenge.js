@@ -243,7 +243,7 @@ function endGame(){
     let time = Cookies.get('endTime') - Cookies.get('startTime')
     let seconds = Math.trunc(time/1000);
     let minutes = Math.trunc(seconds/60);
-    let remainingSeconds = seconds % minutes;
+    let remainingSeconds = seconds % 60;
     timeToFinish.textContent = 'Completed in: ' + minutes + 'm ' + remainingSeconds + 's';
     wordList.textContent = 'Choices:';
     element.replaceChildren(gameOver, br1, stacks);
