@@ -214,7 +214,7 @@ function endGame(){
     const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
     const timeToFinish = document.createElement('div');
-    timeToFinish.className = 'text-small'
+    timeToFinish.className = 'text-small button-end'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
     refreshButton.className = 'button-small-dark button-end';
@@ -244,7 +244,7 @@ function endGame(){
     let seconds = Math.trunc(time/1000);
     let minutes = Math.trunc(seconds/60);
     let remainingSeconds = seconds % 60;
-    timeToFinish.textContent = 'Completed in: ' + minutes + 'm ' + remainingSeconds + 's';
+    timeToFinish.textContent = 'Time: ' + minutes + 'm ' + remainingSeconds + 's';
     wordList.textContent = 'Choices:';
     element.replaceChildren(gameOver, br1, stacks);
 
