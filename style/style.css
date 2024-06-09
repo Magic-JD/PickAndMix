@@ -367,13 +367,13 @@ main {
 }
 
 .view {
-    height: 70vh;
+    height: 65vh;
 }
 
 .keyboard {
     user-select: none;
     background: var(--clr-highlight);
-    height: 30vh;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     align-items: center;
