@@ -217,14 +217,14 @@ function endGame(){
     timeToFinish.className = 'text-small'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
-    refreshButton.className = 'button-small-dark';
+    refreshButton.className = 'button-small-dark button-end';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { 
         Cookies.remove('chosen-words')
         Cookies.remove('endTime')
         window.location.reload();
     });
-    classicButton.className = 'button-small-dark';
+    classicButton.className = 'button-small-dark button-end';
     classicButton.textContent = "Free Play"
     classicButton.addEventListener("click", (event) => { 
         window.location.href = '../classic'; 

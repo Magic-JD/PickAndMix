@@ -269,6 +269,10 @@ input:focus {
   transition-duration: 0.4s;
 }
 
+.button-end {
+  margin: 3vh 3vw 0vh 3vw;
+}
+
 .button-small-light {
   background-color: var(--clr-text);
   color: var(--clr-background);
