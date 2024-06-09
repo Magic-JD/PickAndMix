@@ -271,6 +271,7 @@ input:focus {
 
 .button-end {
   margin: 3vh 3vw 0vh 3vw;
+  white-space: nowrap;
 }
 
 .button-small-light {
