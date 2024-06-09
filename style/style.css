@@ -651,3 +651,7 @@ main {
         opacity: 0;
     }
 }
+
+.blurred {
+    filter: blur(5px);
+}

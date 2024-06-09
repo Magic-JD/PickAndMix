@@ -217,6 +217,7 @@ function endGame(){
     timeToFinish.className = 'text-small button-end'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
+    const shareButton = document.createElement('button');
     refreshButton.className = 'button-small-dark button-end';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { 
@@ -229,11 +230,13 @@ function endGame(){
     classicButton.addEventListener("click", (event) => { 
         window.location.href = '../classic'; 
     });
+    shareButton.className = 'button-small-dark button-end';
+    shareButton.textContent = 'Copy Share Link';
     const wordList = document.createElement('div');
     wordList.className = 'end-stack'
     buttons.className = 'end-stack'
     stacks.className = 'end-container'
-    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton);
+    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton);
     stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
     finalScore.textContent = 'Score: ' + currentScore;
@@ -246,6 +249,15 @@ function endGame(){
     let remainingSeconds = seconds % 60;
     timeToFinish.textContent = 'Time: ' + minutes + 'm ' + remainingSeconds + 's';
     wordList.textContent = 'Choices:';
+
+    shareButton.addEventListener('click', (event) => {
+        let domain = 'https://pick-and-mix.vercel.app/results?' 
+        let wordsChosen = [...previousWords];
+        wordsChosen = wordsChosen.map(w => {return words.indexOf(w);});
+        wordsChosen = wordsChosen.join(':');
+        let stringText = domain + 'score=' + currentScore + '&time=' + time + '&words=' + wordsChosen; 
+        navigator.clipboard.writeText(stringText);
+    });
     element.replaceChildren(gameOver, br1, stacks);
 
     previousWords.forEach(value => {
