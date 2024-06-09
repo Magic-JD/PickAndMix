@@ -214,7 +214,7 @@ function endGame(){
     const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
     const timeToFinish = document.createElement('div');
-    timeToFinish.className = 'text-small button-end'
+    timeToFinish.className = 'text-small'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
     const shareButton = document.createElement('button');
