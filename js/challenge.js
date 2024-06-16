@@ -251,6 +251,7 @@ function endGame(){
     wordList.textContent = 'Choices:';
 
     shareButton.addEventListener('click', (event) => {
+        addError('Link Copied');
         let domain = 'https://pick-and-mix.vercel.app/results?' 
         let wordsChosen = [...previousWords];
         let wordsChosenId = wordsChosen.map(w => {return words.indexOf(w);});
@@ -261,6 +262,7 @@ function endGame(){
         let url = domain + encode;   
         let stringText = url + '\n\n' + emojiText;
         navigator.clipboard.writeText(stringText);
+        addError('Link Copied');
     });
     element.replaceChildren(gameOver, br1, stacks);
 
