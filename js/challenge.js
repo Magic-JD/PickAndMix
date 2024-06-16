@@ -253,9 +253,10 @@ function endGame(){
     shareButton.addEventListener('click', (event) => {
         let domain = 'https://pick-and-mix.vercel.app/results?' 
         let wordsChosen = [...previousWords];
-        wordsChosen = wordsChosen.map(w => {return words.indexOf(w);});
-        wordsChosen = wordsChosen.join(':');
-        let stringText = domain + 'score=' + currentScore + '&time=' + time + '&words=' + wordsChosen; 
+        let wordsChosenId = wordsChosen.map(w => {return words.indexOf(w);});
+        let wordsChosenString = wordsChosenId.join(':');
+        let emojiText = convertToEmoji(wordsChosen);
+        let stringText = domain + 'score=' + currentScore + '&time=' + time + '&words=' + wordsChosenString + '\n\n' + emojiText;
         navigator.clipboard.writeText(stringText);
     });
     element.replaceChildren(gameOver, br1, stacks);
@@ -268,3 +269,16 @@ function endGame(){
     });
 }
 
+function convertToEmoji(wc){
+    let fw = wc[0];
+    let ew = wc[wc.length -1];
+    return wc.map(w => w.split('').map(c => {
+        if(fw.includes(c)){
+            return '🟥';
+        }
+        if(ew.includes(c)){
+            return '🟢';
+        }
+        return '❓';
+    }).join('')).join('\n');
+}
