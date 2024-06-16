@@ -256,7 +256,10 @@ function endGame(){
         let wordsChosenId = wordsChosen.map(w => {return words.indexOf(w);});
         let wordsChosenString = wordsChosenId.join(':');
         let emojiText = convertToEmoji(wordsChosen);
-        let stringText = domain + 'score=' + currentScore + '&time=' + time + '&words=' + wordsChosenString + '\n\n' + emojiText;
+        let params = 'score=' + currentScore + '&time=' + time + '&words=' + wordsChosenString;
+        let encode = 'code=' + stringToHex(params);
+        let url = domain + encode;   
+        let stringText = url + '\n\n' + emojiText;
         navigator.clipboard.writeText(stringText);
     });
     element.replaceChildren(gameOver, br1, stacks);
@@ -267,6 +270,15 @@ function endGame(){
         preWordDiv.className = 'text-large';
         wordList.appendChild(preWordDiv);
     });
+}
+
+function stringToHex(str) {
+    let hex = '';
+    for (let i = 0; i < str.length; i++) {
+        let code = str.charCodeAt(i).toString(16);
+        hex += ('0' + code).slice(-2);
+    }
+    return hex;
 }
 
 function convertToEmoji(wc){
