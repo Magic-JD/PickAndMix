@@ -286,13 +286,20 @@ function stringToHex(str) {
 function convertToEmoji(wc){
     let fw = wc[0];
     let ew = wc[wc.length -1];
-    return wc.map(w => w.split('').map(c => {
-        if(fw.includes(c)){
-            return '🟥';
-        }
-        if(ew.includes(c)){
-            return '🟢';
-        }
-        return '❓';
-    }).join('')).join('\n');
+    return wc.map(w => {
+        let usedChar = [];
+        return w.split('').map(c => {
+            if(usedChar.includes(c)){
+                return '❓';
+            }
+            usedChar.push(c);
+            if(fw.includes(c)){
+                return '🟥';
+            }
+            if(ew.includes(c)){
+                return '🟢';
+            }
+            return '❓';
+        }).join('')}
+    ).join('\n');
 }
