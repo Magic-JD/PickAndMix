@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnImage.src = language == 'en' ? '../style/gb.png' : '../style/id.png';
     });
     btnStart.addEventListener('click', (event) => {
-        if(window.innerWidth < 800){
+        if("ontouchstart" in document.documentElement){
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }

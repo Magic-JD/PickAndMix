@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnStart = document.getElementById('start-button')
     btnStart.addEventListener('click', (event) => {
         setLanguage(language);
-        if(window.innerWidth < 800){
+        if("ontouchstart" in document.documentElement){
             const keyboard = document.getElementById('keyboard');
             keyboard.style.display = 'flex';
         }
