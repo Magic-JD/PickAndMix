@@ -202,6 +202,18 @@ function endGame(){
     const midnight = new Date();
     midnight.setDate(midnight.getDate() + 1);
     midnight.setHours(0,0,0,0);
+    const midnightTomorrow = new Date();
+    midnightTomorrow.setDate(midnightTomorrow.getDate() + 2);
+    midnightTomorrow.setHours(0,0,0,0);
+    const onStreak = Cookies.get('onStreak');
+    let streak = Cookies.get('streak')
+    if(!onStreak || !streak){
+        streak = 1;
+    } else if(onStreak != midnight && streak){
+        streak = Number(streak) + 1;
+    }
+    Cookies.set('streak', streak, { expires: midnightTomorrow });
+    Cookies.set('onStreak', midnight, { expires: midnightTomorrow });
     Cookies.set('chosen-words', [...previousWords].join(','), { expires: midnight })
     const keyboard = document.getElementById('keyboard').remove();
     const element = document.getElementById('interaction-space');
@@ -210,6 +222,7 @@ function endGame(){
     const br2 = document.createElement('br');
     const br3 = document.createElement('br');
     const gameOver = document.createElement('div');
+    const streakDiv = document.createElement('div');
     const buttons = document.createElement('div');
     const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
@@ -239,6 +252,10 @@ function endGame(){
     buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton);
     stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
+    streakDiv.textContent = streak + ' Day Streak!'
+    if(streak < 3){
+        streakDiv.style.display = 'none';
+    }
     finalScore.textContent = 'Score: ' + currentScore;
     if(!Cookies.get('endTime')){
         Cookies.set('endTime', new Date().getTime(), {expires: midnight});
@@ -264,7 +281,7 @@ function endGame(){
         navigator.clipboard.writeText(stringText);
         addError('Link Copied');
     });
-    element.replaceChildren(gameOver, br1, stacks);
+    element.replaceChildren(gameOver, streakDiv, br1, stacks);
 
     previousWords.forEach(value => {
         const preWordDiv = document.createElement('div');
