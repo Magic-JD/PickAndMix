@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const btnImage = document.getElementById('language-image');
     btnImage.src = language == 'en' ? 'style/gb.png' : 'style/id.png';
-    btnLanguage.addEventListener('click', (event) => {
+    btnLanguage.addEventListener('click', () => {
         if(language == 'en'){
             setLanguage('id');
         } else if(language == 'id'){
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnImage.src = language == 'en' ? 'style/gb.png' : 'style/id.png';
     });
     const btnStart = document.getElementById('start-button')
-    btnStart.addEventListener('click', (event) => {
+    btnStart.addEventListener('click', () => {
         setLanguage(language);
         if("ontouchstart" in document.documentElement){
             const keyboard = document.getElementById('keyboard');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         useWord(lastWord);
     });
     const btnBack = document.getElementById('back-button')
-    btnBack.addEventListener('click', (event) => {
+    btnBack.addEventListener('click', () => {
         goBack();
     });
 });
@@ -231,6 +231,7 @@ function endGame(){
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
     const shareButton = document.createElement('button');
+    const donate = document.createElement('a');
     refreshButton.className = 'button-small-dark button-end';
     refreshButton.textContent = "Try Again"
     refreshButton.addEventListener("click", (event) => { 
@@ -249,7 +250,10 @@ function endGame(){
     wordList.className = 'end-stack'
     buttons.className = 'end-stack'
     stacks.className = 'end-container'
-    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton);
+    donate.className = 'button-small-dark button-end'
+    donate.href = "https://paypal.me/JosephDaunt"
+    donate.textContent = "Donate"
+    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton, donate);
     stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
     streakDiv.textContent = streak + ' Day Streak!'
