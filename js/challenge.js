@@ -215,7 +215,7 @@ function endGame(){
     Cookies.set('streak', streak, { expires: midnightTomorrow });
     Cookies.set('onStreak', midnight, { expires: midnightTomorrow });
     Cookies.set('chosen-words', [...previousWords].join(','), { expires: midnight })
-    const keyboard = document.getElementById('keyboard').remove();
+    document.getElementById('keyboard').remove();
     const element = document.getElementById('interaction-space');
     element.className = 'text-large bold landing-text'
     const br1 = document.createElement('br');
