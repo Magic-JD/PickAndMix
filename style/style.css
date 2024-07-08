@@ -447,7 +447,7 @@ main {
 }
 
 .animation-holder {
-    font-size: var(--fs-large);
+    font-size: var(--fs-extra-large);
     font-family: var(--ff-body);
     color: var(--clr-text);
     width: 100vw;
@@ -455,39 +455,39 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 
 .letter {
     opacity: 0;
-    width: 4vw;
-    font-size: var(--fs-large);
-    font-family: var(--ff-body);
+    width: 6vw;
 }
 
 .letter1 {
     animation: oneA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
 }
 .letter2 {
     animation: twoA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
 }
 .letter3 {
     animation: threeA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
 }
 .letter4 {
     animation: fourA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
 }
 .letter5 {
     animation: fiveA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
 }
 .letter6 {
     animation: sixA 12s linear infinite forwards;
-    width: 4vw;
+    width: 6vw;
     opacity: 0;
 }
 
@@ -496,10 +496,10 @@ main {
         transform: translate(0%, 0%);
     }
     17% {
-        transform: translate(0%, 100%);
+        transform: translate(0%, 60%);
     }
     25% {
-        transform: translate(400%, 100%);
+        transform: translate(400%, 60%);
     }
     27% {
         transform: translate(400%, 0%);
@@ -527,10 +527,10 @@ main {
         transform: translate(0%, 0%);
     }
     12% {
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     15% {
-        transform: translate(-100%, -100%);
+        transform: translate(-100%, -60%);
     }
     17% {
         transform: translate(-100%, 0%);
@@ -539,10 +539,10 @@ main {
         transform: translate(-100%, 0%);
     }
     88% {
-        transform: translate(-100%, -100%);
+        transform: translate(-100%, -60%);
     }
     90% {
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     93% {
         transform: translate(0%, 0%);
@@ -554,10 +554,10 @@ main {
         transform: translate(0%, 0%);
     }
     33% {
-        transform: translate(0%, 100%);
+        transform: translate(0%, 60%);
     }
     36% {
-        transform: translate(100%, 100%);
+        transform: translate(100%, 60%);
     }
     40% {
         transform: translate(100%, 0%);
@@ -566,10 +566,10 @@ main {
         transform: translate(100%, 0%);
     }
     63% {
-        transform: translate(100%, 100%);
+        transform: translate(100%, 60%);
     }
     66% {
-        transform: translate(0%, 100%);
+        transform: translate(0%, 60%);
     }
     70% {
         transform: translate(0%, 0%);
@@ -580,10 +580,10 @@ main {
         transform: translate(0%, 0%);
     }
     38% {
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     42% {
-        transform: translate(-200%, -100%);
+        transform: translate(-200%, -60%);
     }
     45% {
         transform: translate(-200%, 0%);
@@ -592,10 +592,10 @@ main {
         transform: translate(-200%, 0%);
     }
     58% {
-        transform: translate(-200%, -100%);
+        transform: translate(-200%, -60%);
     }
     62% {
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     65% {
         transform: translate(0%, 0%);
@@ -607,10 +607,10 @@ main {
         transform: translate(0%, 0%);
     }
     27%{
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     30% {
-        transform: translate(-200%, -100%);
+        transform: translate(-200%, -60%);
     }
     33% {
         transform: translate(-200%, 0%);
@@ -619,10 +619,10 @@ main {
         transform: translate(-200%, 0%);
     }
     70% {
-        transform: translate(-200%, -100%);
+        transform: translate(-200%, -60%);
     }
     73%{
-        transform: translate(0%, -100%);
+        transform: translate(0%, -60%);
     }
     75% {
         transform: translate(0%, 0%);
@@ -642,10 +642,10 @@ main {
         transform: translate(-100%, 0%);
     }
     75% {
-        transform: translate(-100%, 100%);
+        transform: translate(-100%, 60%);
     }
     85% {
-        transform: translate(-500%, 100%);
+        transform: translate(-500%, 60%);
     }
     87% {
         transform: translate(-500%, 0%);
