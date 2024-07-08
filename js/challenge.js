@@ -227,7 +227,9 @@ function endGame(){
     const stacks = document.createElement('div');
     const finalScore = document.createElement('div');
     const timeToFinish = document.createElement('div');
-    timeToFinish.className = 'text-small'
+    const timeToFinishText = document.createElement('div');
+    timeToFinish.className = 'text-medium'
+    timeToFinishText.className = 'text-medium'
     const refreshButton = document.createElement('button');
     const classicButton = document.createElement('button');
     const shareButton = document.createElement('button');
@@ -253,7 +255,7 @@ function endGame(){
     donate.className = 'button-small-dark button-end'
     donate.href = "https://paypal.me/JosephDaunt"
     donate.textContent = "Donate"
-    buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton, donate);
+    buttons.replaceChildren(finalScore, br2, timeToFinishText, timeToFinish, br3, refreshButton, classicButton, shareButton, donate);
     stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
     gameOver.className = 'text-xl';
@@ -269,7 +271,8 @@ function endGame(){
     let seconds = Math.trunc(time/1000);
     let minutes = Math.trunc(seconds/60);
     let remainingSeconds = seconds % 60;
-    timeToFinish.textContent = 'Time: ' + minutes + 'm ' + remainingSeconds + 's';
+    timeToFinishText.textContent = 'Time';
+    timeToFinish.textContent = minutes + 'm ' + remainingSeconds + 's';
     wordList.textContent = 'Choices:';
 
     shareButton.addEventListener('click', (event) => {
