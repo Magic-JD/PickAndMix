@@ -55,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         useWord(lastWord);
     });
     const btnBack = document.getElementById('back-button')
+    const input = document.getElementById('word-input');
     btnBack.addEventListener('click', () => {
+        input.textContent = '';
         goBack();
     });
 });

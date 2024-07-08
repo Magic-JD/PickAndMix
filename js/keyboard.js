@@ -1,3 +1,10 @@
+function enterWithKey(input){
+    word = input.textContent;
+    input.textContent = '';
+    useWord(word);
+} 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('word-input');
     window.addEventListener(
@@ -30,7 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const back = document.getElementById('BACK');
     back.addEventListener('click', (event) => {
-        input.textContent = input.textContent.length == 0 ? '' : input.textContent.slice(0, -1);
+        if(input.textContent.length < 5){
+            input.textContent = input.textContent.length == 0 ? '' : input.textContent.slice(0, -1);
+            return;
+        }
+        testWord = input.textContent;
+        let gameState = validateWord(testWord, previousWords);
+        if (gameState !== VALID) {
+            input.textContent = input.textContent.length == 0 ? '' : input.textContent.slice(0, -1);
+            return;
+        }
+        gameState = validatePreviousWord(testWord, lastWord);
+        if (gameState !== VALID) {
+            input.textContent = input.textContent.length == 0 ? '' : input.textContent.slice(0, -1);
+            return;
+        }
+        enterWithKey(input);
     }, true,);
 
     window.addEventListener(
@@ -47,8 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     const enter = document.getElementById('ENTER');
     enter.addEventListener('click', (event) => {
-        word = input.textContent;
-        input.textContent = '';
-        useWord(word)
+        enterWithKey(input);
     }, true,);
 });
