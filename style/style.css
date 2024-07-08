@@ -23,7 +23,7 @@
     --fs-small: 0.75rem;
     --fs-medium: 1.2rem;
     --fs-large: 1.5rem;
-    --fs-extra-large: 3rem;
+    --fs-extra-large: 2.25rem;
     --fs-monster: 6rem;
     }
 }
@@ -262,7 +262,7 @@ input:focus {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: var(--fs-small);
+  font-size: var(--fs-medium);
   font-family: var(--ff-body);
   border-radius: 8px;
   width: 25vw;

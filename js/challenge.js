@@ -245,7 +245,7 @@ function endGame(){
         window.location.href = '../classic'; 
     });
     shareButton.className = 'button-small-dark button-end';
-    shareButton.textContent = 'Copy Share Link';
+    shareButton.textContent = 'Share';
     const wordList = document.createElement('div');
     wordList.className = 'end-stack'
     buttons.className = 'end-stack'
@@ -256,6 +256,7 @@ function endGame(){
     buttons.replaceChildren(finalScore, br2, timeToFinish, br3, refreshButton, classicButton, shareButton, donate);
     stacks.replaceChildren(wordList, buttons);
     gameOver.textContent = '🎉 Congratulations! 🎉';
+    gameOver.className = 'text-xl';
     streakDiv.textContent = streak + ' Day Streak!'
     if(streak < 3){
         streakDiv.style.display = 'none';
@@ -272,7 +273,7 @@ function endGame(){
     wordList.textContent = 'Choices:';
 
     shareButton.addEventListener('click', (event) => {
-        addError('Link Copied');
+        addError('Link Copied!');
         let domain = 'https://pick-and-mix.vercel.app/results?' 
         let wordsChosen = [...previousWords];
         let wordsChosenId = wordsChosen.map(w => {return words.indexOf(w);});
