@@ -4,7 +4,7 @@
     --clr-text: rgb(250, 220, 237);
     --clr-error: rgb(102, 2, 29);
 
-    --ff-primary: "Heebo", sans-serif;
+    --ff-primary: "Concert One", sans-serif;
 
     --ff-body: var(--ff-primary); 
     --ff-heading: var(--ff-primary);
@@ -455,6 +455,7 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
 }
@@ -535,10 +536,10 @@ main {
     17% {
         transform: translate(-100%, 0%);
     }
-    85% {
+    84% {
         transform: translate(-100%, 0%);
     }
-    88% {
+    87% {
         transform: translate(-100%, -60%);
     }
     90% {
@@ -603,7 +604,7 @@ main {
 }
 
 @keyframes fiveA{
-    23% {
+    24% {
         transform: translate(0%, 0%);
     }
     27%{
@@ -663,4 +664,13 @@ main {
 
 .blurred {
     filter: blur(8px);
+}
+
+
+.contained {
+    color: var(--clr-highlight);
+}
+
+.uncontained {
+    color: var(--clr-text);
 }

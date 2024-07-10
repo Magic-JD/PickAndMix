@@ -109,7 +109,6 @@ function setInitialWord(word) {
     const gameState = validateWord(word, previousWords);
     if (gameState === VALID) {
         initGameStage(word)
-        addResult(gameState)
     } else {
         addError(gameState)
     }
@@ -133,7 +132,6 @@ function addWord(word) {
         endGame();
     }
     addWordDiv(lastWord);
-    addResult(gameState);
     return;
 }
 
@@ -178,18 +176,31 @@ function validateWord(word, usedWords) {
     return VALID;
 }
 
-function addResult(content) {
-    const element = document.getElementById('last-message');
-    element.textContent = content;
-    const goal = document.getElementById('goal-word');
-    goal.textContent = goalWord;
-}
-
 function addWordDiv(word){
     const lastWordDiv = document.getElementById('last-word');
-    lastWordDiv.textContent = word;
+    lastWordDiv.innerHTML = "";
+    for (let char of word){
+        lastWordDiv.append(colorLetter(char, goalWord))
+    } 
+    const goalWordDiv = document.getElementById('goal-word');
+    goalWordDiv.innerHTML = "";
+    for (let char of goalWord){
+        goalWordDiv.append(colorLetter(char, word))
+    } 
     const scoreCount = document.getElementById('score');
     scoreCount.textContent = 'Steps: ' + (currentScore <= 0 ? '' : currentScore);
+}
+
+function colorLetter(c, w){
+    const element = document.createElement("span")
+    element.textContent = c;
+    if(w.includes(c)){
+        element.className = "contained"
+    } else {
+        element.className = "uncontained"
+    }
+    return element;
+    
 }
 
 function addError(error){
