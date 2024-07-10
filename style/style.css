@@ -668,9 +668,9 @@ main {
 
 
 .contained {
-    color: var(--clr-highlight);
+    opacity: 0.7;
 }
 
 .uncontained {
-    color: var(--clr-text);
+    opacity: 1;
 }
