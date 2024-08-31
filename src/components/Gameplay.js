@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Keyboard from "./Keyboard";
 import { useError } from "../context/ErrorContext";
-import "./Gameplay.css"
+import "./Gameplay.css";
 
 const VALID = "";
 const NOT_A_WORD = "This is not a recognised word.";
@@ -23,23 +23,39 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
   };
 
   const handleBackspace = () => {
+    if (inputText.length === 5) {
+      const word = inputText.toUpperCase();
+      let gameState = validateWord(
+        word,
+        words,
+        previousWords.slice(0, currentScore + 1),
+        lastWord,
+      );
+      if (gameState === VALID) {
+        updateGame(word);
+        return;
+      }
+    }
     setInputText((prev) => (prev.length === 0 ? "" : prev.slice(0, -1)));
   };
 
   const handleEnterPress = () => {
     const word = inputText.toUpperCase();
-    let gameState = validateWord(word, words, previousWords.slice(0, currentScore + 1));
+    let gameState = validateWord(
+      word,
+      words,
+      previousWords.slice(0, currentScore + 1),
+      lastWord,
+    );
     if (gameState !== VALID) {
       showError(gameState);
       setInputText("");
       return;
     }
-    gameState = validatePreviousWord(word, lastWord);
-    if (gameState !== VALID) {
-      showError(gameState);
-      setInputText("");
-      return;
-    }
+    updateGame(word);
+  };
+
+  const updateGame = (word) => {
     const newScore = currentScore + 1;
     previousWords.length = newScore;
     previousWords.push(word);
@@ -68,14 +84,19 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
   };
 
   const formatPrevious = (previousWords) => {
-      return previousWords.map((w) => {
-          const index = previousWords.indexOf(w);
-          let className = "previous-word"
-          if (index > currentScore){
-            className += " faded"
-          }
-          return <span className={className} onClick={goBack(index, w)}>{w}</span>})
-  }
+    return previousWords.map((w) => {
+      const index = previousWords.indexOf(w);
+      let className = "previous-word";
+      if (index > currentScore) {
+        className += " faded";
+      }
+      return (
+        <span className={className} onClick={goBack(index, w)}>
+          {w}
+        </span>
+      );
+    });
+  };
 
   return (
     <div>
@@ -102,8 +123,12 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
       <div id="word-input" className="monster-input">
         {inputText}
       </div>
-      <div id="chosen-words" className="text-medium flex-container previous-word-holder">
-      {(currentScore > 0 || previousWords.length > 1) && formatPrevious(previousWords)}
+      <div
+        id="chosen-words"
+        className="text-medium flex-container previous-word-holder"
+      >
+        {(currentScore > 0 || previousWords.length > 1) &&
+          formatPrevious(previousWords)}
       </div>
       <Keyboard
         onKeyPress={handleKeyPress}
@@ -114,7 +139,16 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
   );
 };
 
-function validatePreviousWord(word, lastWord) {
+function validateWord(word, words, usedWords, lastWord) {
+  if (word.length !== 5) {
+    return INCORRECT_LENGTH;
+  }
+  if (usedWords.includes(word)) {
+    return ALREADY_CHOSEN;
+  }
+  if (!words.includes(word)) {
+    return NOT_A_WORD;
+  }
   const lastWordCharacters = Array.from(lastWord);
   const nextWordCharacters = Array.from(word);
   let foundChanged = false;
@@ -128,19 +162,6 @@ function validatePreviousWord(word, lastWord) {
     } else {
       lastWordCharacters.splice(index, 1);
     }
-  }
-  return VALID;
-}
-
-function validateWord(word, words, usedWords) {
-  if (word.length !== 5) {
-    return INCORRECT_LENGTH;
-  }
-  if (usedWords.includes(word)) {
-    return ALREADY_CHOSEN;
-  }
-  if (!words.includes(word)) {
-    return NOT_A_WORD;
   }
   return VALID;
 }
