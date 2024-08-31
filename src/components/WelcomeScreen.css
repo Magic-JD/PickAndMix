@@ -1,0 +1,238 @@
+.heading {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+}
+
+@media only screen and (max-width: 800px) {
+    .heading {
+        margin-top: 15%;
+    }
+}
+
+.landing-text {
+    text-align: center;
+}
+
+.animation-holder {
+    font-size: 15rem;
+    font-family: var(--ff-body);
+    color: var(--clr-text);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 800px) {
+    .animation-holder {
+        font-size: 5rem;
+    }
+}
+
+.letter {
+    opacity: 0;
+    width: 15vw;
+}
+
+.letter1 {
+    animation: oneA 12s linear infinite forwards;
+    width: 15vw;
+}
+.letter2 {
+    animation: twoA 12s linear infinite forwards;
+    width: 15vw;
+}
+.letter3 {
+    animation: threeA 12s linear infinite forwards;
+    width: 15vw;
+}
+.letter4 {
+    animation: fourA 12s linear infinite forwards;
+    width: 15vw;
+}
+.letter5 {
+    animation: fiveA 12s linear infinite forwards;
+    width: 15vw;
+}
+.letter6 {
+    animation: sixA 12s linear infinite forwards;
+    width: 15vw;
+    opacity: 0;
+}
+
+@keyframes oneA{
+    15%{
+        transform: translate(0%, 0%);
+    }
+    17% {
+        transform: translate(0%, 60%);
+    }
+    25% {
+        transform: translate(400%, 60%);
+    }
+    27% {
+        transform: translate(400%, 0%);
+    }
+    40% {
+        transform: translate(400%, 0%);
+        opacity: 1;
+    }
+    45% {
+        transform: translate(400%, 0%);
+        opacity: 0;
+    }
+    95% {
+        transform:  translate(0%, 0%);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes twoA{
+    10% {
+        transform: translate(0%, 0%);
+    }
+    12% {
+        transform: translate(0%, -60%);
+    }
+    15% {
+        transform: translate(-100%, -60%);
+    }
+    17% {
+        transform: translate(-100%, 0%);
+    }
+    84% {
+        transform: translate(-100%, 0%);
+    }
+    87% {
+        transform: translate(-100%, -60%);
+    }
+    90% {
+        transform: translate(0%, -60%);
+    }
+    93% {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes threeA{
+    30% {
+        transform: translate(0%, 0%);
+    }
+    33% {
+        transform: translate(0%, 60%);
+    }
+    36% {
+        transform: translate(100%, 60%);
+    }
+    40% {
+        transform: translate(100%, 0%);
+    }
+    60% {
+        transform: translate(100%, 0%);
+    }
+    63% {
+        transform: translate(100%, 60%);
+    }
+    66% {
+        transform: translate(0%, 60%);
+    }
+    70% {
+        transform: translate(0%, 0%);
+    }
+}
+@keyframes fourA{
+    35% {
+        transform: translate(0%, 0%);
+    }
+    38% {
+        transform: translate(0%, -60%);
+    }
+    42% {
+        transform: translate(-200%, -60%);
+    }
+    45% {
+        transform: translate(-200%, 0%);
+    }
+    55% {
+        transform: translate(-200%, 0%);
+    }
+    58% {
+        transform: translate(-200%, -60%);
+    }
+    62% {
+        transform: translate(0%, -60%);
+    }
+    65% {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes fiveA{
+    24% {
+        transform: translate(0%, 0%);
+    }
+    27%{
+        transform: translate(0%, -60%);
+    }
+    30% {
+        transform: translate(-200%, -60%);
+    }
+    33% {
+        transform: translate(-200%, 0%);
+    }
+    66% {
+        transform: translate(-200%, 0%);
+    }
+    70% {
+        transform: translate(-200%, -60%);
+    }
+    73%{
+        transform: translate(0%, -60%);
+    }
+    75% {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes sixA{
+    40% {
+        transform: translate(-100%, 0%);
+        opacity: 0;
+    }
+    45% {
+        transform: translate(-100%, 0%);
+        opacity: 1;
+    }
+    73% {
+        transform: translate(-100%, 0%);
+    }
+    75% {
+        transform: translate(-100%, 60%);
+    }
+    85% {
+        transform: translate(-500%, 60%);
+    }
+    87% {
+        transform: translate(-500%, 0%);
+        opacity:1;
+    }
+    95% {
+        transform: translate(-500%, 0%);
+        opacity:1;
+    }
+    100%{
+        transform: translate(-500%, 0%);
+        opacity: 0;
+    }
+}
+
