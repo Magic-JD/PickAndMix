@@ -15,9 +15,7 @@ function Main() {
   const midnightTomorrow = calculateMidnight().setDate(midnight.getDate() + 1);
 
   const handleBackToWelcome = () => {
-    Cookies.remove("chosen-words");
-    Cookies.remove("endTime");
-    Cookies.remove("score");
+    wipeCookies();
     setAppState("WELCOME");
   };
 
@@ -40,6 +38,7 @@ function Main() {
     setAppState("ENDED");
   };
   const handleStartClick = () => {
+    wipeCookies();
     if (!Cookies.get("startTime")) {
       Cookies.set("startTime", new Date().getTime(), { expires: midnight });
     }
@@ -103,10 +102,18 @@ function retrievePreviousWords() {
   }
   return [];
 }
+
 function calculateMidnight() {
   const midnight = new Date();
   midnight.setDate(midnight.getDate() + 1);
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
+
+function wipeCookies() {
+  Cookies.remove("chosen-words");
+  Cookies.remove("endTime");
+  Cookies.remove("score");
+}
+
 export default Main;
