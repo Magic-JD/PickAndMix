@@ -46,9 +46,6 @@ const Results = () => {
   return (
     <div className="end-stack text-medium">
       <div className="text-large results-title">Shared Results</div>
-      <div id="score" style={{ textAlign: "center" }}>
-        Their Score: {score}{yourScore && <span><br />Your Score: {yourScore}</span>}
-      </div>
       <div id="time" style={{ textAlign: "center" }}>
         Their Time: {timeText}{yourTime != "" && <span><br />Your Time: {yourTime}</span>}
       </div>
