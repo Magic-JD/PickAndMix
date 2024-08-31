@@ -6,7 +6,7 @@ import Results from "./components/Results";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
 import Cookies from "js-cookie";
-import { ErrorProvider } from './context/ErrorContext';
+import { ErrorProvider } from "./context/ErrorContext";
 
 import "./App.css";
 
@@ -34,12 +34,17 @@ function App() {
     setHelpVisible(!isHelpVisible);
   };
 
+  const goHome = () => {
+    window.location.reload();
+  };
+
   return (
     <Router>
       <ErrorProvider>
         <GlobalHeader
           toggleSettings={toggleSettings}
           toggleHelp={toggleHelp}
+          goHome={goHome}
         />
         {isSettingsVisible && (
           <Settings

@@ -2,9 +2,17 @@ import React from "react";
 
 import "./GlobalHeader.css"
 
-const GlobalHeader = ( { toggleSettings, toggleHelp } ) => {
+const GlobalHeader = ( { toggleSettings, toggleHelp, goHome } ) => {
     return (
     <div className="flex-container bar">
+        <button id="home-button" className="icon left-pushed">
+          <img
+            id="home-image"
+            src="images/home.png"
+            alt="Home"
+            onClick={goHome}
+          />
+        </button>
         <button id="help-button" className="icon right-pushed">
           <img
             id="help-image"
