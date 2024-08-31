@@ -28,7 +28,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
 
   const handleEnterPress = () => {
     const word = inputText.toUpperCase();
-    let gameState = validateWord(word, words, previousWords);
+    let gameState = validateWord(word, words, previousWords.slice(0, currentScore + 1));
     if (gameState !== VALID) {
       showError(gameState);
       setInputText("");
