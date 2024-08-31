@@ -41,27 +41,27 @@
 }
 
 .letter1 {
-    animation: oneA 12s linear infinite forwards;
+    animation: oneA 10s linear infinite forwards;
     width: 15vw;
 }
 .letter2 {
-    animation: twoA 12s linear infinite forwards;
+    animation: twoA 10s linear infinite forwards;
     width: 15vw;
 }
 .letter3 {
-    animation: threeA 12s linear infinite forwards;
+    animation: threeA 10s linear infinite forwards;
     width: 15vw;
 }
 .letter4 {
-    animation: fourA 12s linear infinite forwards;
+    animation: fourA 10s linear infinite forwards;
     width: 15vw;
 }
 .letter5 {
-    animation: fiveA 12s linear infinite forwards;
+    animation: fiveA 10s linear infinite forwards;
     width: 15vw;
 }
 .letter6 {
-    animation: sixA 12s linear infinite forwards;
+    animation: sixA 10s linear infinite forwards;
     width: 15vw;
     opacity: 0;
 }
@@ -79,15 +79,15 @@
     27% {
         transform: translate(400%, 0%);
     }
-    40% {
+    45% {
         transform: translate(400%, 0%);
         opacity: 1;
     }
-    45% {
+    48% {
         transform: translate(400%, 0%);
         opacity: 0;
     }
-    95% {
+    93% {
         transform:  translate(0%, 0%);
         opacity: 0;
     }
@@ -205,11 +205,11 @@
 }
 
 @keyframes sixA{
-    40% {
+    45% {
         transform: translate(-100%, 0%);
         opacity: 0;
     }
-    45% {
+    48% {
         transform: translate(-100%, 0%);
         opacity: 1;
     }
@@ -226,7 +226,7 @@
         transform: translate(-500%, 0%);
         opacity:1;
     }
-    95% {
+    93% {
         transform: translate(-500%, 0%);
         opacity:1;
     }
