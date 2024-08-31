@@ -14,7 +14,7 @@
     --fs-medium: 1.75rem;
     --fs-large: 3rem;
     --fs-extra-large: 5rem;
-    --fs-monster: 20rem;
+    --fs-monster: 10rem;
 }
 
 
@@ -103,7 +103,7 @@ picture {
     border: none;
     caret-color: transparent;
     text-align: center;
-    font-size: calc(22vw);
+    font-size: min(calc(22vw), 15rem);
     color: var(--clr-text);
     text-transform:uppercase;
     font-family: var(--ff-body);
