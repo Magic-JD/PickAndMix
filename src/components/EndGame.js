@@ -18,7 +18,7 @@ function EndGameComponent({
     const params = `score=${currentScore}&time=${msecondsPlayed}&words=${wordsChosenString}`;
     const encode = `code=${stringToHex(params)}`;
     const url = `${domain}${encode}`;
-    const stringText = `${url}\n\n${emojiText}`;
+    const stringText = `Play Pick and Mix with me!\n${url}\n\n${emojiText}`;
     navigator.clipboard.writeText(stringText);
       showError("Copied to Clipboard")
   };
