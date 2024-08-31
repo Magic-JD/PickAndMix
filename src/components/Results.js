@@ -1,6 +1,6 @@
 import React from "react";
 import Cookies from "js-cookie";
-import "./Results.css"
+import "./Results.css";
 
 const Results = () => {
   let urlParams = new URLSearchParams(window.location.search);
@@ -14,15 +14,19 @@ const Results = () => {
   let theirWords = urlParams.get("words");
   theirWords = theirWords.split(":");
   let choWords = Cookies.get("chosen-words");
+  const yourScore = Cookies.get("score");
+  const yourTimeStartNs = Cookies.get("startTime");
+  const yourTimeEndNs = Cookies.get("endTime");
+  let yourTime = "";
+  if (yourTimeEndNs) {
+    yourTime = timeToString(yourTimeEndNs - yourTimeStartNs);
+  }
   let previousWords = [];
   if (choWords) {
     previousWords = choWords.split(",");
   }
-  let seconds = Math.trunc(time / 1000);
-  let minutes = Math.trunc(seconds / 60);
-  let remainingSeconds = seconds % 60;
-  let timeText = minutes + "m " + remainingSeconds + "s";
 
+  const timeText = timeToString(time);
   const renderTheirWords = () => {
     return theirWords.map((value, index) => (
       <div key={index} className={`text-medium ${!choWords ? "blurred" : ""}`}>
@@ -41,18 +45,19 @@ const Results = () => {
 
   return (
     <div className="end-stack text-medium">
-      <div className="text-large results-title">
-        Shared Results
-      </div>
+      <div className="text-large results-title">Shared Results</div>
       <div id="score" style={{ textAlign: "center" }}>
-        Score: {score}
+        Their Score: {score}{yourScore && <span><br />Your Score: {yourScore}</span>}
       </div>
       <div id="time" style={{ textAlign: "center" }}>
-        Time: {timeText}
+        Their Time: {timeText}{yourTime != "" && <span><br />Your Time: {yourTime}</span>}
       </div>
       <a className="button-small-dark button-end" href="../">
         Play
       </a>
+      {!choWords && (
+        <div className="motivation">Solve todays puzzle to see their words</div>
+      )}
       <div className="end-container text-medium button-end">
         <div id="their-words" className="end-stack">
           <div>Their Words</div>
@@ -77,4 +82,10 @@ function hexToString(hex) {
   return str;
 }
 
+function timeToString(time) {
+  const seconds = Math.trunc(time / 1000);
+  const minutes = Math.trunc(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return minutes + "m " + remainingSeconds + "s";
+}
 export default Results;

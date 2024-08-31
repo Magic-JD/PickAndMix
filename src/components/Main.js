@@ -17,6 +17,7 @@ function Main() {
   const handleBackToWelcome = () => {
     Cookies.remove("chosen-words");
     Cookies.remove("endTime");
+    Cookies.remove("score");
     setAppState("WELCOME");
   };
 
