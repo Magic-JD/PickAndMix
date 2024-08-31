@@ -6,11 +6,13 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
     const handleKeyDown = (event) => {
       const { key } = event;
       if (key === "Enter") {
+        event.stopPropagation();
         onEnter();
       } else if (key === "Backspace") {
+        event.stopPropagation();
         onBackspace();
-      } else if (/^[a-zA-Z0-9]$/.test(key)) {
-        // Only handle alphanumeric keys
+      } else if (/^[a-zA-Z]$/.test(key)) {
+        event.stopPropagation();
         onKeyPress(key);
       }
     };
