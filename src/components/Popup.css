@@ -1,0 +1,66 @@
+label {
+    margin-left: 10%;
+    display: block;
+    font-size: var(--fs-large);
+}
+
+select {
+    margin-left: 10%;
+    width: 80%;
+    font-size: var(--fs-large);
+    margin-bottom: 5%;
+    background-color: var(--clr-background);
+    border: var(--clr-highlight) 5px solid;
+    border-radius: 8px;
+    padding: 5px;
+    color: var(--clr-text);
+}
+
+select>option {
+    background-color: var(--clr-highlight);
+    color: var(--clr-text);
+}
+
+.settings-menu {
+    position: static;
+    width: 100%;
+    align-items: left;
+    text-align: left;
+    justify-content: left;
+}
+
+.help-menu {
+    position: static;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.popup {
+  position: absolute;
+  background-color: var(--clr-background);
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  z-index: 1000;
+  border: 6px solid var(--clr-highlight);
+  border-radius: 8px;
+}
+
+.quit {
+    position: absolute;
+    top: 2vh;
+    right: 5vh;
+    width: 5%;
+    height: auto;
+}
+
+.title {
+    font-size: var(--fs-extra-large);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    text-align: center;
+}

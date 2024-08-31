@@ -1,0 +1,11 @@
+.previous-word-holder {
+    height: 15vh;
+}
+.previous-word {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.faded {
+    opacity: 50%;
+}

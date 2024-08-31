@@ -1,0 +1,30 @@
+.error-message {
+    color: var(--clr-text);
+    background: var(--clr-error);
+    font-family: var(--ff-body);
+    font-size: var(--fs-medium);
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 20;
+    z-index: 110;
+    padding: 8px 14px;
+    animation: fadeOut 2s ease 1s forwards;
+}
+
+@keyframes fadeOut{
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
