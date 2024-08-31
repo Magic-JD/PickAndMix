@@ -777,7 +777,7 @@ export function getWords(lang){
         case "id":
             return indonesianWords;
         default:
-            console.error("correct word type cannot be chosen");
+            return englishWords;
     }
 }
 
@@ -789,6 +789,6 @@ export function getTodaysWords(lang){
         case "id":
             return dateToChallengeIndonesian[currentDate];
         default:
-            console.error("Correct daily words cannot be found");
+            return dateToChallengeEnglish[currentDate];
     }
 }
