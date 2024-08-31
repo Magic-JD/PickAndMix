@@ -1,0 +1,70 @@
+.keyboard {
+    user-select: none;
+    background: var(--clr-highlight);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyboard-margin {
+    display: flex;
+    width: 100%;
+    height: 4%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.keyboard-row {
+    display: flex;
+    width: 100%;
+    height: 21%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.half-key {
+    display: flex;
+    background: var(--clr-highlight);
+    width: 5%;
+    height: 95%;
+}
+
+.key {
+    border-radius: 10%;
+    display: flex;
+    color: var(--clr-text);
+    background: var(--clr-background);
+    width: 9.5%;
+    height: 95%;
+    margin: 0.5%;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-large);
+    font-family: var(--ff-body);
+}
+
+.big-key {
+    border-radius: 10%;
+    display: flex;
+    color: var(--clr-text);
+    background: var(--clr-background);
+    width: 14%;
+    height: 90%;
+    margin: 1%;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-small);
+    font-family: var(--ff-body);
+}
+
+
+@media (pointer:fine) {
+    .keyboard {
+        display: none;
+    }
+}
+

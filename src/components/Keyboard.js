@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import "./Keyboard.css";
 
 const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
   useEffect(() => {
