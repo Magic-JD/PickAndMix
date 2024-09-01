@@ -38,7 +38,7 @@ const PreviousWords = ({ previousWords, currentIndex, goBack }) => {
   return (
     <div
       id="chosen-words"
-      className="text-medium flex-container previous-word-holder"
+      className="flex-container previous-word-holder"
     >
       {previousWords.length >= 5 && startIndex > 0 && <span onClick={() => scrollBack()}>⇜</span>}
       {(currentIndex > 0 || previousWords.length > 1) &&

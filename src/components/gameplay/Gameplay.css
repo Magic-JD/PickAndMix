@@ -10,6 +10,9 @@
 .previous-word {
     margin-left: 2%;
     margin-right: 2%;
+    color: var(--clr-text);
+    font-size: var(--fs-medium);
+    font-family: var(--ff-body);
 }
 
 .faded {
