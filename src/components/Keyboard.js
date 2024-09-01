@@ -37,11 +37,13 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
         ))}
       </div>
       <div className="keyboard-row">
+      <div className="half-key" />
         {["A", "S", "D", "F", "G", "H", "J", "K", "L"].map((letter) => (
           <div key={letter} className="key" onClick={() => onKeyPress(letter)}>
             {letter}
           </div>
         ))}
+      <div className="half-key" />
       </div>
       <div className="keyboard-row">
         <div

@@ -1,30 +1,24 @@
 .keyboard {
+    position: absolute;
     user-select: none;
     background: var(--clr-highlight);
-    height: 40vh;
+    height: 30vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.keyboard-margin {
-    display: flex;
-    width: 100%;
-    height: 4%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    padding-top: 2%;
+    bottom: 0;
 }
 
 .keyboard-row {
     display: flex;
     width: 100%;
-    height: 21%;
+    height: 30%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-
 
 .half-key {
     display: flex;
@@ -38,9 +32,9 @@
     display: flex;
     color: var(--clr-text);
     background: var(--clr-background);
-    width: 9.5%;
-    height: 95%;
-    margin: 0.5%;
+    width: 9%;
+    height: 90%;
+    margin: 1%;
     justify-content: center;
     align-items: center;
     font-size: var(--fs-large);
@@ -52,9 +46,12 @@
     display: flex;
     color: var(--clr-text);
     background: var(--clr-background);
-    width: 14%;
-    height: 95%;
-    margin: 1%;
+    width: 13.5%;
+    height: 90%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     justify-content: center;
     align-items: center;
     font-size: var(--fs-small);
