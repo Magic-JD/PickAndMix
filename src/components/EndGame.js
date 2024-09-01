@@ -15,8 +15,8 @@ function EndGameComponent({
     const wordsChosenId = previousWords;
     const wordsChosenString = wordsChosenId.join(":");
     const emojiText = convertToEmoji(previousWords);
-    const params = `score=${currentScore}&time=${msecondsPlayed}&words=${wordsChosenString}`;
-    const encode = `code=${stringToHex(params)}`;
+    const params = `t=${msecondsPlayed}&w=${wordsChosenString}`;
+    const encode = `code=${btoa(params)}`;
     const url = `${domain}${encode}`;
     const stringText = `Play Pick and Mix with me!\n${url}\n\n${emojiText}`;
     navigator.clipboard.writeText(stringText);
@@ -82,14 +82,6 @@ function EndGameComponent({
       </div>
     </div>
   );
-}
-
-// Utility functions converted to pure JavaScript functions
-function stringToHex(str) {
-  return str
-    .split("")
-    .map((char) => ("0" + char.charCodeAt(0).toString(16)).slice(-2))
-    .join("");
 }
 
 function convertToEmoji(wc) {

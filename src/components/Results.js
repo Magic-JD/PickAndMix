@@ -6,15 +6,13 @@ const Results = () => {
   let urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
   if (code) {
-    const decrypted = hexToString(code);
+    const decrypted = atob(code);
     urlParams = new URLSearchParams(decrypted);
   }
-  let score = urlParams.get("score");
-  let time = urlParams.get("time");
-  let theirWords = urlParams.get("words");
+  let time = urlParams.get("t");
+  let theirWords = urlParams.get("w");
   theirWords = theirWords.split(":");
   let choWords = Cookies.get("chosen-words");
-  const yourScore = Cookies.get("score");
   const yourTimeStartNs = Cookies.get("startTime");
   const yourTimeEndNs = Cookies.get("endTime");
   let yourTime = "";
@@ -68,16 +66,6 @@ const Results = () => {
     </div>
   );
 };
-
-function hexToString(hex) {
-  let str = "";
-  for (let i = 0; i < hex.length; i += 2) {
-    let hexCode = hex.substr(i, 2);
-    let charCode = parseInt(hexCode, 16);
-    str += String.fromCharCode(charCode);
-  }
-  return str;
-}
 
 function timeToString(time) {
   const seconds = Math.trunc(time / 1000);
