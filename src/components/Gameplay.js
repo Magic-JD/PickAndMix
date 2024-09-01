@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Keyboard from "./Keyboard";
+import PreviousWords from "./PreviousWords";
 import { useError } from "../context/ErrorContext";
 import "./Gameplay.css";
 
@@ -83,21 +84,6 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
     return word.split("").map((char) => colorLetter(char, comparisonWord));
   };
 
-  const formatPrevious = (previousWords) => {
-    return previousWords.map((w) => {
-      const index = previousWords.indexOf(w);
-      let className = "previous-word";
-      if (index > currentScore) {
-        className += " faded";
-      }
-      return (
-        <span className={className} onClick={goBack(index, w)}>
-          {w}
-        </span>
-      );
-    });
-  };
-
   return (
     <div>
       <div className="score-container">
@@ -123,13 +109,11 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
       <div id="word-input" className="monster-input">
         {inputText}
       </div>
-      <div
-        id="chosen-words"
-        className="text-medium flex-container previous-word-holder"
-      >
-        {(currentScore > 0 || previousWords.length > 1) &&
-          formatPrevious(previousWords)}
-      </div>
+      <PreviousWords
+        previousWords={previousWords}
+        currentIndex={currentScore}
+        goBack={goBack}
+      />
       <Keyboard
         onKeyPress={handleKeyPress}
         onBackspace={handleBackspace}
