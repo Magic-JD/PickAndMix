@@ -37,6 +37,14 @@ select>option {
     justify-content: center;
 }
 
+.help-text {
+    font-size: var(--fs-medium);
+}
+
+.select-menu {
+    font-size: var(--fs-large);
+}
+
 .popup {
   position: absolute;
   background-color: var(--clr-background);

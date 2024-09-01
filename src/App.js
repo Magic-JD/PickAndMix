@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./components/Main";
 import GlobalHeader from "./components/GlobalHeader";
 import Results from "./components/Results";
-import Settings from "./components/Settings";
-import Help from "./components/Help";
+import Settings from "./components/popup/Settings";
+import Help from "./components/popup/Help";
 import Cookies from "js-cookie";
 import { ErrorProvider } from "./context/ErrorContext";
 
