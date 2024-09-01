@@ -15,6 +15,13 @@
     font-family: var(--ff-body);
 }
 
+.word-arrow {
+    color: var(--clr-text);
+    font-size: var(--fs-large);
+    font-family: var(--ff-body);
+    padding-bottom: 1%;
+}
+
 .faded {
     opacity: 50%;
 }

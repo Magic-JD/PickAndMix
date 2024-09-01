@@ -40,10 +40,10 @@ const PreviousWords = ({ previousWords, currentIndex, goBack }) => {
       id="chosen-words"
       className="flex-container previous-word-holder"
     >
-      {previousWords.length >= 5 && startIndex > 0 && <span onClick={() => scrollBack()}>⇜</span>}
+      {previousWords.length >= 5 && startIndex > 0 && <span className="word-arrow" onClick={() => scrollBack()}>⇜</span>}
       {(currentIndex > 0 || previousWords.length > 1) &&
         formatPrevious(previousWords)}
-      {previousWords.length >= 5 && startIndex < previousWords.length-5 && <span onClick={() => scrollForward()}>⇝</span>}
+      {previousWords.length >= 5 && startIndex < previousWords.length-5 && <span className="word-arrow" onClick={() => scrollForward()}>⇝</span>}
     </div>
   );
 };
