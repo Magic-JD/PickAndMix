@@ -38,7 +38,7 @@ select>option {
 }
 
 .help-text {
-    font-size: var(--fs-medium);
+    font-size: var(--fs-small);
 }
 
 .select-menu {
