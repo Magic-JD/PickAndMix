@@ -37,6 +37,11 @@ function Main() {
     setCurrentScore(score);
     setAppState("ENDED");
   };
+
+  const handlePartialChoice = (wordList) => {
+    Cookies.set("partial-choice", wordList, { expires: midnight });
+  };
+
   const handleStartClick = () => {
     wipeCookies();
     if (!Cookies.get("startTime")) {
@@ -55,11 +60,14 @@ function Main() {
     case "PLAYING":
       return (
         <Gameplay
-          startWord={getTodaysWords(lang).startWord}
+          startWord={
+            getOrUseWords(getTodaysWords(lang).startWord)
+          }
           endWord={getTodaysWords(lang).endWord}
           words={getWords(lang)}
           backToWelcome={handleBackToWelcome}
           onGameEnd={handleGameEnd}
+          partialChoice={handlePartialChoice}
         />
       );
     case "ENDED":
@@ -77,13 +85,24 @@ function Main() {
   }
 }
 
+function getOrUseWords(dailyStartWord){
+    const partialChoice = Cookies.get("partial-choice");
+    if(partialChoice){
+        return partialChoice.split(",");
+    }
+    return [dailyStartWord];
+}
+
 // Maybe we can extend this to be able to save in game state
 function getCurrentAppState() {
   const ended = Cookies.get("endTime");
-  if (!ended) {
-    return "WELCOME";
+  if (ended) {
+    return "ENDED";
   }
-  return "ENDED";
+  if (Cookies.get("partial-choice")) {
+    return "PLAYING";
+  }
+  return "WELCOME";
 }
 
 function calculateSecondsPlayed() {
@@ -114,6 +133,7 @@ function wipeCookies() {
   Cookies.remove("chosen-words");
   Cookies.remove("endTime");
   Cookies.remove("score");
+  Cookies.remove("partial-choice");
 }
 
 export default Main;

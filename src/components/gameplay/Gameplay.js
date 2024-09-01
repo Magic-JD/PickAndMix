@@ -10,12 +10,12 @@ const ALREADY_CHOSEN = "You have already used this word.";
 const INCORRECT_LENGTH = "Words must be 5 letters long.";
 const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
 
-const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
+const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partialChoice }) => {
   const { showError } = useError();
   const [inputText, setInputText] = useState("");
-  const [previousWords] = useState([startWord]);
-  const [lastWord, setLastWord] = useState(startWord);
-  const [currentScore, setCurrentScore] = useState(0);
+  const [previousWords] = useState(startWord);
+  const [lastWord, setLastWord] = useState(startWord[startWord.length-1]);
+  const [currentScore, setCurrentScore] = useState(startWord.length - 1);
 
   const handleKeyPress = (key) => {
     if (inputText.length < 5) {
@@ -66,6 +66,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
       onGameEnd(previousWords, newScore);
     }
     setInputText("");
+      partialChoice(previousWords)
   };
 
   const goBack = (wordIndex, word) => () => {
