@@ -25,6 +25,8 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
     };
   }, [onKeyPress, onBackspace, onEnter]);
 
+  const keyboardLayout = localStorage.getItem("layout") || "STANDARD";
+
   return (
     <div id="keyboard" className="keyboard">
       <div className="keyboard-row">
@@ -42,16 +44,24 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
         ))}
       </div>
       <div className="keyboard-row">
-        <div id="ENTER" className="big-key" onClick={onEnter}>
-          ENTER
+        <div
+          id={keyboardLayout === "STANDARD" ? "ENTER" : "BACK"}
+          className="big-key"
+          onClick={keyboardLayout === "STANDARD" ? onEnter : onBackspace}
+        >
+          {keyboardLayout === "STANDARD" ? "ENTER" : "BACK"}
         </div>
         {["Z", "X", "C", "V", "B", "N", "M"].map((letter) => (
           <div key={letter} className="key" onClick={() => onKeyPress(letter)}>
             {letter}
           </div>
         ))}
-        <div id="BACK" className="big-key" onClick={onBackspace}>
-          BACK
+        <div
+          id={keyboardLayout === "STANDARD" ? "BACK" : "ENTER"}
+          className="big-key"
+          onClick={keyboardLayout === "STANDARD" ? onBackspace : onEnter}
+        >
+          {keyboardLayout === "STANDARD" ? "BACK" : "ENTER"}
         </div>
       </div>
     </div>

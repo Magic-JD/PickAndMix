@@ -27,6 +27,10 @@ function App() {
     window.location.reload();
   };
 
+    const handleLayoutChange = (event) => {
+        localStorage.setItem("layout", event.target.value)
+    }
+
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
   };
@@ -44,6 +48,7 @@ function App() {
             toggleSettings={toggleSettings}
             changeFont={handleFontChange}
             changeLang={handleLanguageChange}
+            changeLayout={handleLayoutChange}
           />
         )}
         {isHelpVisible && <Help toggleHelp={toggleHelp} />}

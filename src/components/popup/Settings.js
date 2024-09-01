@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Popup.css";
 
-const Settings = ({ toggleSettings, changeFont, changeLang }) => {
+const Settings = ({ toggleSettings, changeFont, changeLang, changeLayout }) => {
   return (
     <div className="popup">
       <div className="quit">
@@ -28,6 +28,14 @@ const Settings = ({ toggleSettings, changeFont, changeLang }) => {
           <option value="'Arial', sans-serif">Basic</option>
           <option value="'Concert One', sans-serif">Bubble</option>
           <option value="'JetBrains Mono', monospace">Mono</option>
+        </select>
+        <label htmlFor="layoutSelect">Keybord Layout:</label>
+        <select id="layoutSelect" value="" onChange={changeLayout}>
+          <option value="" disabled>
+            Select a layout
+          </option>
+          <option value="STANDARD">Standard</option>
+          <option value="INVERTED">Inverted</option>
         </select>
       </div>
     </div>
