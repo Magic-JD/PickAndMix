@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Keyboard from "./Keyboard";
 import PreviousWords from "./PreviousWords";
-import { useError } from "../context/ErrorContext";
+import { useError } from "../../context/ErrorContext";
 import "./Gameplay.css";
 
 const VALID = "";

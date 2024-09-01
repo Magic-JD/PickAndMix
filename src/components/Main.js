@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WelcomeScreen from "./WelcomeScreen";
-import Gameplay from "./Gameplay";
+import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
 import { getWords, getTodaysWords } from "../data/words.js";
 import Cookies from "js-cookie";
