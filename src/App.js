@@ -6,7 +6,7 @@ import Results from "./components/Results";
 import Settings from "./components/Settings";
 import Help from "./components/Help";
 import Cookies from "js-cookie";
-import { ErrorProvider } from './context/ErrorContext';
+import { ErrorProvider } from "./context/ErrorContext";
 
 import "./App.css";
 
@@ -14,11 +14,12 @@ function App() {
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [isHelpVisible, setHelpVisible] = useState(false);
 
+  const currentFont = Cookies.get("font");
+  if (currentFont) {
+    changeFont(currentFont);
+  }
   const handleFontChange = (event) => {
-    document.documentElement.style.setProperty(
-      "--ff-primary",
-      event.target.value,
-    );
+    changeFont(event.target.value);
   };
 
   const handleLanguageChange = (event) => {
@@ -37,10 +38,7 @@ function App() {
   return (
     <Router>
       <ErrorProvider>
-        <GlobalHeader
-          toggleSettings={toggleSettings}
-          toggleHelp={toggleHelp}
-        />
+        <GlobalHeader toggleSettings={toggleSettings} toggleHelp={toggleHelp} />
         {isSettingsVisible && (
           <Settings
             toggleSettings={toggleSettings}
@@ -56,6 +54,11 @@ function App() {
       </ErrorProvider>
     </Router>
   );
+}
+
+function changeFont(font) {
+  Cookies.set("font", font);
+  document.documentElement.style.setProperty("--ff-primary", font);
 }
 
 export default App;
