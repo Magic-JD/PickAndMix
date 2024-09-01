@@ -1,5 +1,11 @@
 .previous-word-holder {
-    height: 15vh;
+    height: 10vh;
+}
+
+@media (pointer:fine) {
+    .previous-word-holder {
+        height: 40vh;
+    }
 }
 .previous-word {
     margin-left: 2%;
@@ -8,4 +14,14 @@
 
 .faded {
     opacity: 50%;
+}
+
+.bottom-component {
+    position: absolute;
+    user-select: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
 }

@@ -1,5 +1,4 @@
 .keyboard {
-    position: absolute;
     user-select: none;
     background: var(--clr-highlight);
     height: 28vh;

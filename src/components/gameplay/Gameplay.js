@@ -109,6 +109,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
       <div id="word-input" className="monster-input">
         {inputText}
       </div>
+      <div className="bottom-component">
       <PreviousWords
         previousWords={previousWords}
         currentIndex={currentScore}
@@ -119,6 +120,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd }) => {
         onBackspace={handleBackspace}
         onEnter={handleEnterPress}
       />
+      </div>
     </div>
   );
 };
