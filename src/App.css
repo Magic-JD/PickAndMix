@@ -101,12 +101,17 @@ picture {
     border: none;
     caret-color: transparent;
     text-align: center;
-    font-size: min(calc(22vw), 15rem);
+    font-size: 15rem;
     color: var(--clr-text);
     text-transform:uppercase;
     font-family: var(--ff-body);
 }
 
+@media only screen and (max-width: 800px) {
+    .monster-input {
+    font-size: calc(28vw);
+    }
+}
 
 input:focus {
     outline: none;
