@@ -21,7 +21,7 @@ const PreviousWords = ({ previousWords, currentIndex, goBack }) => {
         className += " faded";
       }
       return (
-        <span className={className} onClick={goBack(index, w)}>
+        <span className={className} key={w} onClick={goBack(index, w)}>
           {w}
         </span>
       );
