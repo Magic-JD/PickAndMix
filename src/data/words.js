@@ -765,9 +765,17 @@ dateToChallengeIndonesian['2025-06-06'] = {startWord: 'CURAH', endWord: 'MESIN'}
 dateToChallengeIndonesian['2025-06-07'] = {startWord: 'CALON', endWord: 'PETIR'}
 
 function getDateString() {
-  let d = new Date();
-  d.setUTCFullYear(d.getFullYear(), d.getMonth(), d.getDate());
-  return new Date().toISOString().split("T")[0];
+  const d = new Date();
+  const year = d.getFullYear();
+  let month = d.getMonth() + 1;
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  let day = d.getDate();
+  if (day < 10) {
+    day = `0${day}`;
+  }
+  return `${year}-${month}-${day}`;
 }
 
 export function getWords(lang){
