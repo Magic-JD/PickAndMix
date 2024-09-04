@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./components/Main";
 import GlobalHeader from "./components/GlobalHeader";
@@ -11,6 +11,11 @@ import { ErrorProvider } from "./context/ErrorContext";
 import "./App.css";
 
 function App() {
+  useEffect(() => {
+    // This will refresh the app at midnight to ensure that the user is not caught in an indeterminate state
+      refreshAtMidnight();
+  }, []);
+
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [isHelpVisible, setHelpVisible] = useState(false);
 
@@ -27,9 +32,9 @@ function App() {
     window.location.reload();
   };
 
-    const handleLayoutChange = (event) => {
-        localStorage.setItem("layout", event.target.value)
-    }
+  const handleLayoutChange = (event) => {
+    localStorage.setItem("layout", event.target.value);
+  };
 
   const toggleSettings = () => {
     setSettingsVisible(!isSettingsVisible);
@@ -65,5 +70,17 @@ function changeFont(font) {
   Cookies.set("font", font);
   document.documentElement.style.setProperty("--ff-primary", font);
 }
-
+function refreshAtMidnight() {
+  const timeUntilMidnight = getTimeUntilMidnight();
+  setTimeout(() => {
+    window.location.reload();
+    refreshAtMidnight();
+  }, timeUntilMidnight);
+}
+function getTimeUntilMidnight() {
+  const now = new Date();
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0);
+  return midnight - now;
+}
 export default App;
