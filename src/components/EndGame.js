@@ -16,8 +16,8 @@ function EndGameComponent({
     const wordsChosenId = previousWords;
     const wordsChosenString = wordsChosenId.join(":");
     const emojiText = convertToEmoji(previousWords);
-    const params = `t=${msecondsPlayed}&w=${wordsChosenString}`;
-    const encode = `id=${getYourPuzzleId()}&code=${btoa(params).replace(/=*$/, '')}`;
+    const params = `t=${msecondsPlayed}&w=${wordsChosenString}&i=${getYourPuzzleId()}`;
+    const encode = `code=${btoa(params).replace(/=*$/, '')}`;
     const url = `${domain}${encode}`;
     const stringText = `Play Pick and Mix with me!\n${url}\n\n${emojiText}`;
     navigator.clipboard.writeText(stringText);

@@ -6,10 +6,10 @@ import { getYourPuzzleId } from "../utils/TimeUtils"
 const Results = () => {
   let urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
-  const id = urlParams.get("id") || 0;
-  const futurePuzzle = id > getYourPuzzleId();
   const decrypted = atob(code);
   urlParams = new URLSearchParams(decrypted);
+  const id = urlParams.get("i") || 0;
+  const futurePuzzle = id > getYourPuzzleId();
   let time = urlParams.get("t");
   let theirWords = urlParams.get("w");
   theirWords = theirWords.split(":");
