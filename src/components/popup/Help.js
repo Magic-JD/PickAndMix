@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useTranslation } from "react-i18next";
 
 import "./Popup.css";
 import HelpPlay from "./HelpPlay";
@@ -30,7 +31,7 @@ const Help = ({ toggleHelp }) => {
         return <HelpSelector select={changeState} />;
     }
   };
-
+  const { t } = useTranslation();
   return (
     <div className="popup">
       <div className="quit">
@@ -39,7 +40,7 @@ const Help = ({ toggleHelp }) => {
         </div>
       </div>
       <div className="help-menu text-small">
-        <div className="title">Help</div>
+        <div className="title">{t('help')}</div>
         {showCurrentState()}
       </div>
     </div>

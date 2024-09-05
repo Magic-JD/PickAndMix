@@ -1,16 +1,16 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import "./Popup.css";
 
 const HelpShare = ({ goBack }) => {
+  const { t } = useTranslation();
   return (
     <div className="help-text">
-      <p>
-        Once you have finished the puzzle you can share with friends by clicking
-        on the share button and then pasting the link into your social media.
-        <br />
-      </p>
-      <button className="button-small-dark" onClick={goBack}>Go Back</button>
+      <p>{t("share-instructions")}</p>
+      <button className="button-small-dark" onClick={goBack}>
+      {t('back-button')}
+      </button>
     </div>
   );
 };

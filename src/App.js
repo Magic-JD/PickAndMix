@@ -9,16 +9,20 @@ import Cookies from "js-cookie";
 import { ErrorProvider } from "./context/ErrorContext";
 
 import "./App.css";
+import "./i18n";
+import { useTranslation } from 'react-i18next';
 
 function App() {
   useEffect(() => {
     // This will refresh the app at midnight to ensure that the user is not caught in an indeterminate state
-      refreshAtMidnight();
+    refreshAtMidnight();
+    const currentLang = Cookies.get("lang") || "en";
+    i18n.changeLanguage(currentLang);
   }, []);
 
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [isHelpVisible, setHelpVisible] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const currentFont = Cookies.get("font");
   if (currentFont) {
     changeFont(currentFont);
@@ -28,7 +32,8 @@ function App() {
   };
 
   const handleLanguageChange = (event) => {
-    Cookies.set("lang", event.target.value);
+    const lang = event.target.value;
+    Cookies.set("lang", lang);
     window.location.reload();
   };
 

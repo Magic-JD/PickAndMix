@@ -1,7 +1,8 @@
 import React from "react";
-import "./EndGame.css"
-import { useError } from "../context/ErrorContext"
-import { getYourPuzzleId } from "../utils/TimeUtils"
+import "./EndGame.css";
+import { useError } from "../context/ErrorContext";
+import { getYourPuzzleId } from "../utils/TimeUtils";
+import { useTranslation } from "react-i18next";
 
 function EndGameComponent({
   tryAgain,
@@ -17,11 +18,11 @@ function EndGameComponent({
     const wordsChosenString = wordsChosenId.join(":");
     const emojiText = convertToEmoji(previousWords);
     const params = `t=${msecondsPlayed}&w=${wordsChosenString}&i=${getYourPuzzleId()}`;
-    const encode = `code=${btoa(params).replace(/=*$/, '')}`;
+    const encode = `code=${btoa(params).replace(/=*$/, "")}`;
     const url = `${domain}${encode}`;
     const stringText = `Play Pick and Mix with me!\n${url}\n\n${emojiText}`;
     navigator.clipboard.writeText(stringText);
-      showError("Copied to Clipboard")
+    showError("Copied to Clipboard");
   };
 
   const handleTryAgain = () => {
@@ -35,16 +36,21 @@ function EndGameComponent({
     let remainingSeconds = seconds % 60;
     return `${minutes}m ${remainingSeconds}s`;
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <div id="end-page" className="text-large bold landing-text">
-      <div className="text-large end-title">🎉 Congratulations! 🎉</div>
-      {streak >= 2 && <div>{streak} Day Streak!</div>}
+      <div className="text-large end-title">🎉 {t("congratulations")} 🎉</div>
+      {streak >= 2 && (
+        <div>
+          {streak} {t("streak")}
+        </div>
+      )}
       <br />
       <div className="end-container">
         <div className="end-stack">
           <div className="end-stack">
-            Choices:
+            {t("choices")}:
             <br />
             {previousWords.map((word, index) => (
               <div key={index}>{word}</div>
@@ -53,7 +59,7 @@ function EndGameComponent({
         </div>
         <div className="end-stack">
           <div className="text-medium">
-            Time:
+            {t("time")}:
             <br />
             {calculateTime()}
           </div>
@@ -63,19 +69,19 @@ function EndGameComponent({
             className="button-small-dark button-end"
             onClick={handleTryAgain}
           >
-            Try Again
+            {t("try-again")}
           </button>
           <button
             className="button-small-dark button-end"
             onClick={handleShare}
           >
-            Share
+            {t("share")}
           </button>
           <a
             className="button-small-dark button-end"
             href="https://paypal.me/JosephDaunt"
           >
-            Donate
+            {t("donate")}
           </a>
         </div>
       </div>

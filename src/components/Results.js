@@ -1,7 +1,8 @@
 import React from "react";
 import Cookies from "js-cookie";
 import "./Results.css";
-import { getYourPuzzleId } from "../utils/TimeUtils"
+import { getYourPuzzleId } from "../utils/TimeUtils";
+import { useTranslation } from "react-i18next";
 
 const Results = () => {
   let urlParams = new URLSearchParams(window.location.search);
@@ -46,42 +47,39 @@ const Results = () => {
     ));
   };
 
+  const { t } = useTranslation();
   return (
     <div className="end-stack text-medium">
-      <div className="text-large results-title">Shared Results</div>
+      <div className="text-large results-title">{t("results-title")}</div>
       <div id="time" style={{ textAlign: "center" }}>
-        Their Time: {timeText}
+        {t("their-time")} {timeText}
         {yourTime !== "" && !futurePuzzle && !pastPuzzle && (
           <span>
             <br />
-            Your Time: {yourTime}
+            {t("your-time")} {yourTime}
           </span>
         )}
       </div>
       <a className="button-small-dark button-end" href="../">
-        Play
+        {t("play-button")}
       </a>
       {!choWords && !futurePuzzle && !pastPuzzle && (
-        <div className="motivation">Solve todays puzzle to see their words</div>
+        <div className="motivation">{t("motivation-todays-puzzle")}</div>
       )}
       {futurePuzzle && (
-        <div className="motivation">
-          Solve this puzzle when it becomes available in your time zone
-        </div>
+        <div className="motivation">{t("motivation-future-puzzle")}</div>
       )}
       {pastPuzzle && (
-        <div className="motivation">
-          This puzzle is from a previous day
-        </div>
+        <div className="motivation">{t("motivation-past-puzzle")}</div>
       )}
       <div className="end-container text-medium button-end">
         <div id="their-words" className="end-stack">
-          <div>Their Words</div>
+          <div>{t("their-words-title")}</div>
           {renderTheirWords()}
         </div>
         {choWords && !futurePuzzle && !pastPuzzle && (
           <div id="your-words" className="end-stack">
-            <div>Your Words</div>
+            <div>{t("your-words-title")}</div>
             {renderYourWords()}
           </div>
         )}
@@ -96,6 +94,5 @@ function timeToString(time) {
   const remainingSeconds = seconds % 60;
   return minutes + "m " + remainingSeconds + "s";
 }
-
 
 export default Results;

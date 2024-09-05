@@ -1,7 +1,9 @@
 import React from "react";
 import "./WelcomeScreen.css";
+import { useTranslation } from "react-i18next";
 
 const WelcomeScreen = ({ onStartClick }) => {
+  const { t, i18n } = useTranslation();
   return (
     <div id="view" className="view">
       <div id="attacher" className="text-medium"></div>
@@ -25,7 +27,7 @@ const WelcomeScreen = ({ onStartClick }) => {
               className="button-small-dark"
               onClick={onStartClick}
             >
-              Start
+              {t("start")}
             </button>
           </div>
         </div>

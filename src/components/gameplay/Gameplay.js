@@ -3,20 +3,28 @@ import Keyboard from "./Keyboard";
 import PreviousWords from "./PreviousWords";
 import { useError } from "../../context/ErrorContext";
 import "./Gameplay.css";
+import { useTranslation } from 'react-i18next';
 
-const VALID = "";
-const NOT_A_WORD = "This is not a recognised word.";
-const ALREADY_CHOSEN = "You have already used this word.";
-const INCORRECT_LENGTH = "Words must be 5 letters long.";
-const TOO_MANY_MODIFICATIONS = "You can only change one letter per turn.";
+const VALID = 0;
+const NOT_A_WORD = 1;
+const ALREADY_CHOSEN = 2;
+const INCORRECT_LENGTH = 3;
+const TOO_MANY_MODIFICATIONS = 4;
 
-const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partialChoice }) => {
+const Gameplay = ({
+  startWord,
+  endWord,
+  words,
+  backToWelcome,
+  onGameEnd,
+  partialChoice,
+}) => {
   const { showError } = useError();
   const [inputText, setInputText] = useState("");
   const [previousWords] = useState(startWord);
-  const [lastWord, setLastWord] = useState(startWord[startWord.length-1]);
+  const [lastWord, setLastWord] = useState(startWord[startWord.length - 1]);
   const [currentScore, setCurrentScore] = useState(startWord.length - 1);
-
+  const { t, i18n } = useTranslation();
   const handleKeyPress = (key) => {
     if (inputText.length < 5) {
       setInputText((prev) => prev + key);
@@ -49,7 +57,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partial
       lastWord,
     );
     if (gameState !== VALID) {
-      showError(gameState);
+      showError(findErrorString(gameState));
       setInputText("");
       return;
     }
@@ -66,7 +74,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partial
       onGameEnd(previousWords, newScore);
     }
     setInputText("");
-      partialChoice(previousWords)
+    partialChoice(previousWords);
   };
 
   const goBack = (wordIndex, word) => () => {
@@ -91,7 +99,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partial
         <div className="flex-container" id="playing">
           <div className="flex-stack">
             <div className="text-large">
-              Current:
+              {t("current")}:
               <br />
               {renderWord(lastWord, endWord)}
             </div>
@@ -99,7 +107,7 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partial
           </div>
           <div className="flex-stack right-pushed">
             <div className="text-large">
-              Goal:
+              {t("goal")}:
               <br />
               {renderWord(endWord, lastWord)}
             </div>
@@ -111,16 +119,16 @@ const Gameplay = ({ startWord, endWord, words, backToWelcome, onGameEnd, partial
         {inputText}
       </div>
       <div className="bottom-component">
-      <PreviousWords
-        previousWords={previousWords}
-        currentIndex={currentScore}
-        goBack={goBack}
-      />
-      <Keyboard
-        onKeyPress={handleKeyPress}
-        onBackspace={handleBackspace}
-        onEnter={handleEnterPress}
-      />
+        <PreviousWords
+          previousWords={previousWords}
+          currentIndex={currentScore}
+          goBack={goBack}
+        />
+        <Keyboard
+          onKeyPress={handleKeyPress}
+          onBackspace={handleBackspace}
+          onEnter={handleEnterPress}
+        />
       </div>
     </div>
   );
@@ -151,6 +159,21 @@ function validateWord(word, words, usedWords, lastWord) {
     }
   }
   return VALID;
+}
+
+function findErrorString(errorCode){
+    switch (errorCode) {
+        case 1:
+           return "not-a-word";
+        case 2:
+           return "already-chosen";
+        case 3:
+           return "incorrect-length";
+        case 4:
+           return "too-many-modifications";
+        default:
+            return "500 server error";
+    }
 }
 
 export default Gameplay;
