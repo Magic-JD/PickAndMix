@@ -10,6 +10,7 @@ const Results = () => {
   urlParams = new URLSearchParams(decrypted);
   const id = urlParams.get("i") || 0;
   const futurePuzzle = id > getYourPuzzleId();
+  const pastPuzzle = id < getYourPuzzleId();
   let time = urlParams.get("t");
   let theirWords = urlParams.get("w");
   theirWords = theirWords.split(":");
@@ -50,7 +51,7 @@ const Results = () => {
       <div className="text-large results-title">Shared Results</div>
       <div id="time" style={{ textAlign: "center" }}>
         Their Time: {timeText}
-        {yourTime != "" && !futurePuzzle && (
+        {yourTime !== "" && !futurePuzzle && !pastPuzzle && (
           <span>
             <br />
             Your Time: {yourTime}
@@ -60,7 +61,7 @@ const Results = () => {
       <a className="button-small-dark button-end" href="../">
         Play
       </a>
-      {!choWords && !futurePuzzle && (
+      {!choWords && !futurePuzzle && !pastPuzzle && (
         <div className="motivation">Solve todays puzzle to see their words</div>
       )}
       {futurePuzzle && (
@@ -68,12 +69,17 @@ const Results = () => {
           Solve this puzzle when it becomes available in your time zone
         </div>
       )}
+      {pastPuzzle && (
+        <div className="motivation">
+          This puzzle is from a previous day
+        </div>
+      )}
       <div className="end-container text-medium button-end">
         <div id="their-words" className="end-stack">
           <div>Their Words</div>
           {renderTheirWords()}
         </div>
-        {choWords && !futurePuzzle && (
+        {choWords && !futurePuzzle && !pastPuzzle && (
           <div id="your-words" className="end-stack">
             <div>Your Words</div>
             {renderYourWords()}
