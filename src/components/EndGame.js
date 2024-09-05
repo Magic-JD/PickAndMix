@@ -39,7 +39,7 @@ function EndGameComponent({
   return (
     <div id="end-page" className="text-large bold landing-text">
       <div className="text-large end-title">🎉 Congratulations! 🎉</div>
-      {streak >= 3 && <div>{streak} Day Streak!</div>}
+      {streak >= 2 && <div>{streak} Day Streak!</div>}
       <br />
       <div className="end-container">
         <div className="end-stack">
@@ -52,8 +52,6 @@ function EndGameComponent({
           </div>
         </div>
         <div className="end-stack">
-          <div className="text-medium">Score: {currentScore}</div>
-          <br />
           <div className="text-medium">
             Time:
             <br />
