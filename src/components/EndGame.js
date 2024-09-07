@@ -22,7 +22,7 @@ function EndGameComponent({
     const url = `${domain}${encode}`;
     const stringText = t('share-text', { url, emojiText });
     navigator.clipboard.writeText(stringText);
-    showError("Copied to Clipboard");
+    showError(t('clipboard-success'));
   };
 
   const handleTryAgain = () => {
