@@ -11,8 +11,6 @@ function Main() {
   const [currentScore, setCurrentScore] = useState(Cookies.get("score"));
   const [streak, setStreak] = useState(Cookies.get("streak"));
   const [secondsPlayed, setSecondsPlayed] = useState(calculateSecondsPlayed());
-  const midnight = calculateMidnight();
-  const midnightTomorrow = calculateMidnight().setDate(midnight.getDate() + 1);
 
   const handleBackToWelcome = () => {
     wipeCookies();
@@ -20,32 +18,40 @@ function Main() {
   };
 
   const handleGameEnd = (words, score) => {
+    const midnight = calculateMidnight();
+    const midnightTomorrow = calculateMidnight();
+    midnightTomorrow.setDate(midnightTomorrow.getDate() + 1);
     const onStreak = Cookies.get("onStreak");
-    if (!onStreak || !streak) {
+    let currentStreak = Number(streak);
+    if (!onStreak || !currentStreak) {
       setStreak(1);
-    } else if (onStreak !== midnight.toString() && streak) {
-      setStreak(Number(streak) + 1);
+      currentStreak = 1;
+    } else if (onStreak !== midnight.toString() && currentStreak) {
+      currentStreak = currentStreak + 1;
+      setStreak(currentStreak);
     }
 
-    Cookies.set("streak", streak, { expires: midnightTomorrow });
+    Cookies.set("streak", currentStreak, { expires: midnightTomorrow });
     Cookies.set("onStreak", midnight.toString(), { expires: midnightTomorrow });
     Cookies.set("chosen-words", [...words].join(","), { expires: midnight });
     Cookies.set("endTime", new Date().getTime(), { expires: midnight });
     setSecondsPlayed(calculateSecondsPlayed());
     setPreviousWords(words);
-    Cookies.set("score", score, { expires: midnightTomorrow });
+    Cookies.set("score", score, { expires: midnight });
     setCurrentScore(score);
     setAppState("ENDED");
   };
 
   const handlePartialChoice = (wordList) => {
-    Cookies.set("partial-choice", wordList, { expires: midnight });
+    Cookies.set("partial-choice", wordList, { expires: calculateMidnight() });
   };
 
   const handleStartClick = () => {
     wipeCookies();
     if (!Cookies.get("startTime")) {
-      Cookies.set("startTime", new Date().getTime(), { expires: midnight });
+      Cookies.set("startTime", new Date().getTime(), {
+        expires: calculateMidnight(),
+      });
     }
     setAppState("PLAYING");
   };
@@ -60,9 +66,7 @@ function Main() {
     case "PLAYING":
       return (
         <Gameplay
-          startWord={
-            getOrUseWords(getTodaysWords(lang).startWord)
-          }
+          startWord={getOrUseWords(getTodaysWords(lang).startWord)}
           endWord={getTodaysWords(lang).endWord}
           words={getWords(lang)}
           backToWelcome={handleBackToWelcome}
@@ -85,12 +89,12 @@ function Main() {
   }
 }
 
-function getOrUseWords(dailyStartWord){
-    const partialChoice = Cookies.get("partial-choice");
-    if(partialChoice){
-        return partialChoice.split(",");
-    }
-    return [dailyStartWord];
+function getOrUseWords(dailyStartWord) {
+  const partialChoice = Cookies.get("partial-choice");
+  if (partialChoice) {
+    return partialChoice.split(",");
+  }
+  return [dailyStartWord];
 }
 
 // Maybe we can extend this to be able to save in game state
