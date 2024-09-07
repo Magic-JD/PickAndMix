@@ -36,7 +36,7 @@ function EndGameComponent({
     let remainingSeconds = seconds % 60;
     return `${minutes}m ${remainingSeconds}s`;
   };
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div id="end-page" className="text-large bold landing-text">

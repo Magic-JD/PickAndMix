@@ -22,7 +22,7 @@ function App() {
 
   const [isSettingsVisible, setSettingsVisible] = useState(false);
   const [isHelpVisible, setHelpVisible] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const currentFont = Cookies.get("font");
   if (currentFont) {
     changeFont(currentFont);
