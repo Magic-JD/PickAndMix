@@ -20,7 +20,7 @@ function EndGameComponent({
     const params = `t=${msecondsPlayed}&w=${wordsChosenString}&i=${getYourPuzzleId()}`;
     const encode = `code=${btoa(params).replace(/=*$/, "")}`;
     const url = `${domain}${encode}`;
-    const stringText = `Play Pick and Mix with me!\n${url}\n\n${emojiText}`;
+    const stringText = t('share-text', { url, emojiText });
     navigator.clipboard.writeText(stringText);
     showError("Copied to Clipboard");
   };

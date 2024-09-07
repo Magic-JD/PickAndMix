@@ -51,6 +51,7 @@ const resources = {
     "motivation-past-puzzle": "This puzzle is from a previous day",
     "their-words-title": "Their Words",
     "your-words-title": "Your Words",
+    "share-text": "Play Pick and Mix with me!\n{{url}}\n\n{{emojiText}}",
             "back-button": "Go Back"
         }
     },
@@ -103,6 +104,7 @@ const resources = {
     "motivation-past-puzzle": "Teka-teki ini dari hari sebelumnya",
     "their-words-title": "Kata-Kata Mereka",
     "your-words-title": "Kata-Kata Anda",
+    "share-text": "Mainkan Pick and Mix dengan saya!\n{{url}}\n\n{{emojiText}}",
             "back-button": "Kembali"
         }
     }
