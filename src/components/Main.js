@@ -3,6 +3,7 @@ import WelcomeScreen from "./WelcomeScreen";
 import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
 import { getWords, getTodaysWords } from "../data/words.js";
+import { wipeCookies } from "../utils/CookiesUtils.js"
 import Cookies from "js-cookie";
 
 function Main() {
@@ -133,11 +134,5 @@ function calculateMidnight() {
   return midnight;
 }
 
-function wipeCookies() {
-  Cookies.remove("chosen-words");
-  Cookies.remove("endTime");
-  Cookies.remove("score");
-  Cookies.remove("partial-choice");
-}
 
 export default Main;

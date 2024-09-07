@@ -7,10 +7,11 @@ import Settings from "./components/popup/Settings";
 import Help from "./components/popup/Help";
 import Cookies from "js-cookie";
 import { ErrorProvider } from "./context/ErrorContext";
+import { wipeCookies } from "./utils/CookiesUtils.js";
 
 import "./App.css";
 import "./i18n";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
   const handleLanguageChange = (event) => {
     const lang = event.target.value;
     Cookies.set("lang", lang);
+    wipeCookies();
     window.location.reload();
   };
 
