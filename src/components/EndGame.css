@@ -1,5 +1,11 @@
 .end-title {
-    margin-top: 15%;
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 800px) {
+    .end-title {
+        margin-top: 15%;
+    }
 }
 
 .time-to-next-game {
