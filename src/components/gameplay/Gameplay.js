@@ -24,7 +24,7 @@ const Gameplay = ({
   const [previousWords] = useState(startWord);
   const [lastWord, setLastWord] = useState(startWord[startWord.length - 1]);
   const [currentScore, setCurrentScore] = useState(startWord.length - 1);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const handleKeyPress = (key) => {
     if (inputText.length < 5) {
       setInputText((prev) => prev + key);
@@ -77,7 +77,7 @@ const Gameplay = ({
     partialChoice(previousWords);
   };
 
-  const goBack = (wordIndex, word) => () => {
+  const goBack = (wordIndex, word) => {
     setCurrentScore(wordIndex);
     setLastWord(word);
   };
