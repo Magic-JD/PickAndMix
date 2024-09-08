@@ -9,6 +9,7 @@ import Help from "./components/popup/Help";
 import Cookies from "js-cookie";
 import { ErrorProvider } from "./context/ErrorContext";
 import { wipeCookies } from "./utils/CookiesUtils.js";
+import { getTimeUntilMidnight } from "./utils/TimeUtils.js"
 
 import "./App.css";
 import "./i18n";
@@ -85,11 +86,5 @@ function refreshAtMidnight() {
     window.location.reload();
     refreshAtMidnight();
   }, timeUntilMidnight);
-}
-function getTimeUntilMidnight() {
-  const now = new Date();
-  const midnight = new Date();
-  midnight.setHours(24, 0, 0, 0);
-  return midnight - now;
 }
 export default App;
