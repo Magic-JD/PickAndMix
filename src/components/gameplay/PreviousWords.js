@@ -26,39 +26,26 @@ const PreviousWords = ({ previousWords, currentIndex, goBack }) => {
     });
   };
 
-  const scrollBack = () => {
-    const newIndex = currentIndex - 1;
-    goBack(newIndex, previousWords[newIndex]);
-  };
-  const scrollForward = () => {
-    const newIndex = currentIndex + 1;
-    goBack(newIndex, previousWords[newIndex]);
-  };
-
   return (
     <div id="chosen-words" className="flex-container previous-word-holder">
-      {currentIndex > 0 && (
         <span
-          className="word-arrow"
+          className={`word-arrow ${currentIndex > 0 ? "" : "hidden"}`}
           onClick={() =>
             goBack(currentIndex - 1, previousWords[currentIndex - 1])
           }
         >
           ←
         </span>
-      )}
       {(currentIndex > 0 || previousWords.length > 1) &&
         formatPrevious(previousWords)}
-      {currentIndex < previousWords.length - 1 && (
         <span
-          className="word-arrow"
+          className={`word-arrow ${currentIndex < previousWords.length - 1 ? "" : "hidden"}`}
           onClick={() =>
             goBack(currentIndex + 1, previousWords[currentIndex + 1])
           }
         >
           →
         </span>
-      )}
     </div>
   );
 };

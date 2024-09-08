@@ -21,6 +21,10 @@
     font-family: var(--ff-body);
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .faded {
     opacity: 50%;
 }
