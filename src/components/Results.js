@@ -34,7 +34,7 @@ const Results = () => {
     return theirWords.map((value, index) => (
       <div
         key={index}
-        className={`text-medium ${!choWords || futurePuzzle ? "blurred" : ""}`}
+        className={`text-medium ${(!choWords && !pastPuzzle ) || futurePuzzle ? "blurred" : ""}`}
       >
         {value}
       </div>
