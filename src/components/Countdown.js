@@ -12,7 +12,7 @@ const Countdown = () => {
   return (
     <div className="flex-stack time-to-next-game">
       <span>{t("time-to-next-puzzle")}</span>
-      <span>{calculateTime(time)}</span>
+      <span>{calculateTime(t, time)}</span>
     </div>
   );
 };

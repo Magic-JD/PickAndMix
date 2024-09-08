@@ -55,7 +55,7 @@ function EndGameComponent({
           <div className="text-medium">
             {t("time")}:
             <br />
-            {calculateTime(msecondsPlayed)}
+            {calculateTime(t, msecondsPlayed)}
           </div>
           <div className="text-medium"></div>
           <br />

@@ -9,19 +9,19 @@ export function getYourPuzzleId() {
   return differenceInDays;
 }
 
-export function calculateTime(time) {
+export function calculateTime(t, time) {
   let seconds = Math.trunc(time / 1000);
   if (seconds < 60) {
-    return `${seconds}s`;
+    return `${seconds}${t("second-short")}`;
   }
   let minutes = Math.trunc(seconds / 60);
   let remainingSeconds = seconds % 60;
   if (minutes < 60) {
-    return `${minutes}m ${remainingSeconds}s`;
+    return `${minutes}${t("minute-short")} ${remainingSeconds}${t("second-short")}`;
   }
   let hours = Math.trunc(minutes / 60);
   let remainingMinutes = minutes % 60;
-  return `${hours}h ${remainingMinutes}m ${remainingSeconds}s`;
+  return `${hours}${t("hour-short")} ${remainingMinutes}${t("minute-short")} ${remainingSeconds}${t("second-short")}`;
 }
 
 export function getTimeUntilMidnight() {

@@ -6,6 +6,7 @@ import { getYourPuzzleId, calculateTime } from "../utils/TimeUtils";
 import { useTranslation } from "react-i18next";
 
 const Results = () => {
+  const { t } = useTranslation();
   let urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
   const decrypted = atob(code);
@@ -21,14 +22,14 @@ const Results = () => {
   const yourTimeEndNs = Cookies.get("endTime");
   let yourTime = "";
   if (yourTimeEndNs) {
-    yourTime = calculateTime(yourTimeEndNs - yourTimeStartNs);
+    yourTime = calculateTime(t, yourTimeEndNs - yourTimeStartNs);
   }
   let previousWords = [];
   if (choWords) {
     previousWords = choWords.split(",");
   }
 
-  const timeText = calculateTime(time);
+  const timeText = calculateTime(t, time);
   const renderTheirWords = () => {
     return theirWords.map((value, index) => (
       <div
@@ -48,7 +49,6 @@ const Results = () => {
     ));
   };
 
-  const { t } = useTranslation();
   return (
     <div className="end-stack text-medium">
       <div className="text-large results-title">{t("results-title")}</div>
