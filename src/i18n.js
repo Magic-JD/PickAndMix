@@ -53,6 +53,7 @@ const resources = {
     "your-words-title": "Your Words",
     "share-text": "Play Pick and Mix with me!\n{{url}}\n\n{{emojiText}}",
                 "clipboard-success": "Copied to Clipboard",
+                "time-to-next-puzzle": "Time to next puzzle",
             "back-button": "Go Back"
         }
     },
@@ -107,6 +108,7 @@ const resources = {
     "your-words-title": "Kata-Kata Anda",
     "share-text": "Mainkan Pick and Mix dengan saya!\n{{url}}\n\n{{emojiText}}",
                 "clipboard-success": "Disalin ke Papan Klip",
+                "time-to-next-puzzle": "Waktu hingga teka-teki berikutnya",
             "back-button": "Kembali"
         }
     }
