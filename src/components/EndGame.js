@@ -1,7 +1,8 @@
 import React from "react";
 import "./EndGame.css";
+import Countdown from "./Countdown";
 import { useError } from "../context/ErrorContext";
-import { getYourPuzzleId } from "../utils/TimeUtils";
+import { getYourPuzzleId, calculateTime } from "../utils/TimeUtils";
 import { useTranslation } from "react-i18next";
 
 function EndGameComponent({
@@ -20,22 +21,15 @@ function EndGameComponent({
     const params = `t=${msecondsPlayed}&w=${wordsChosenString}&i=${getYourPuzzleId()}`;
     const encode = `code=${btoa(params).replace(/=*$/, "")}`;
     const url = `${domain}${encode}`;
-    const stringText = t('share-text', { url, emojiText });
+    const stringText = t("share-text", { url, emojiText });
     navigator.clipboard.writeText(stringText);
-    showError(t('clipboard-success'));
+    showError(t("clipboard-success"));
   };
 
   const handleTryAgain = () => {
     tryAgain();
   };
 
-  const calculateTime = () => {
-    let time = msecondsPlayed;
-    let seconds = Math.trunc(time / 1000);
-    let minutes = Math.trunc(seconds / 60);
-    let remainingSeconds = seconds % 60;
-    return `${minutes}m ${remainingSeconds}s`;
-  };
   const { t } = useTranslation();
 
   return (
@@ -61,7 +55,7 @@ function EndGameComponent({
           <div className="text-medium">
             {t("time")}:
             <br />
-            {calculateTime()}
+            {calculateTime(msecondsPlayed)}
           </div>
           <div className="text-medium"></div>
           <br />
@@ -85,6 +79,7 @@ function EndGameComponent({
           </a>
         </div>
       </div>
+      <Countdown />
     </div>
   );
 }

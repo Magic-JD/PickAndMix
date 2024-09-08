@@ -1,7 +1,8 @@
 import React from "react";
 import Cookies from "js-cookie";
 import "./Results.css";
-import { getYourPuzzleId } from "../utils/TimeUtils";
+import Countdown from "./Countdown";
+import { getYourPuzzleId, calculateTime } from "../utils/TimeUtils";
 import { useTranslation } from "react-i18next";
 
 const Results = () => {
@@ -20,19 +21,19 @@ const Results = () => {
   const yourTimeEndNs = Cookies.get("endTime");
   let yourTime = "";
   if (yourTimeEndNs) {
-    yourTime = timeToString(yourTimeEndNs - yourTimeStartNs);
+    yourTime = calculateTime(yourTimeEndNs - yourTimeStartNs);
   }
   let previousWords = [];
   if (choWords) {
     previousWords = choWords.split(",");
   }
 
-  const timeText = timeToString(time);
+  const timeText = calculateTime(time);
   const renderTheirWords = () => {
     return theirWords.map((value, index) => (
       <div
         key={index}
-        className={`text-medium ${(!choWords || futurePuzzle) ? "blurred" : ""}`}
+        className={`text-medium ${!choWords || futurePuzzle ? "blurred" : ""}`}
       >
         {value}
       </div>
@@ -84,15 +85,9 @@ const Results = () => {
           </div>
         )}
       </div>
+      {(choWords || futurePuzzle) && <Countdown />}
     </div>
   );
 };
-
-function timeToString(time) {
-  const seconds = Math.trunc(time / 1000);
-  const minutes = Math.trunc(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return minutes + "m " + remainingSeconds + "s";
-}
 
 export default Results;
