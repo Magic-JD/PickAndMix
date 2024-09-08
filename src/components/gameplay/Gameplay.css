@@ -17,9 +17,8 @@
 
 .word-arrow {
     color: var(--clr-text);
-    font-size: var(--fs-large);
+    font-size: var(--fs-medium);
     font-family: var(--ff-body);
-    padding-bottom: 1%;
 }
 
 .faded {

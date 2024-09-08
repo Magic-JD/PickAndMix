@@ -38,15 +38,25 @@ const PreviousWords = ({ previousWords, currentIndex, goBack }) => {
   return (
     <div id="chosen-words" className="flex-container previous-word-holder">
       {currentIndex > 0 && (
-        <span className="word-arrow" onClick={() => goBack(currentIndex - 1, previousWords[currentIndex -1])}>
-          ⇜
+        <span
+          className="word-arrow"
+          onClick={() =>
+            goBack(currentIndex - 1, previousWords[currentIndex - 1])
+          }
+        >
+          ←
         </span>
       )}
       {(currentIndex > 0 || previousWords.length > 1) &&
         formatPrevious(previousWords)}
       {currentIndex < previousWords.length - 1 && (
-        <span className="word-arrow" onClick={() => goBack(currentIndex + 1, previousWords[currentIndex + 1])}>
-          ⇝
+        <span
+          className="word-arrow"
+          onClick={() =>
+            goBack(currentIndex + 1, previousWords[currentIndex + 1])
+          }
+        >
+          →
         </span>
       )}
     </div>
