@@ -122,11 +122,11 @@ const resources = {
             "minute-short": "m",
             "second-short": "d",
             "puzzle-path-title": "Dengan kata awal KABUT dan kata tujuan RESMI",
-            "puzzle-step-1": "KABUT - TABUR (mengganti K dengan R)",
-            "puzzle-step-2": "TABUR - REBUT (mengganti A dengan E)",
-            "puzzle-step-3": "REBUT - TERUS (mengganti B dengan S)",
-            "puzzle-step-4": "TERUS - SEMUR (mengganti T dengan M)",
-            "puzzle-step-5": "SEMUR - RESMI (mengganti U dengan I)",
+            "puzzle-step-1": "KABUT - TABUR (ganti K dengan R)",
+            "puzzle-step-2": "TABUR - REBUT (ganti A dengan E)",
+            "puzzle-step-3": "REBUT - TERUS (ganti B dengan S)",
+            "puzzle-step-4": "TERUS - SEMUR (ganti T dengan M)",
+            "puzzle-step-5": "SEMUR - RESMI (ganti U dengan I)",
             "back-button": "Kembali"
         }
     }
