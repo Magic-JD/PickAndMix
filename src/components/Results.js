@@ -30,11 +30,15 @@ const Results = () => {
   }
 
   const timeText = calculateTime(t, time);
+  const idSame = Number(id) === getYourPuzzleId();
+  const timeSame = Number(time) === yourTimeEndNs - yourTimeStartNs;
+  const wordsSame = theirWords.toString() === previousWords.toString();
+  const ownSolve = idSame && timeSame && wordsSame;
   const renderTheirWords = () => {
     return theirWords.map((value, index) => (
       <div
         key={index}
-        className={`text-medium ${(!choWords && !pastPuzzle ) || futurePuzzle ? "blurred" : ""}`}
+        className={`text-medium ${(!choWords && !pastPuzzle) || futurePuzzle ? "blurred" : ""}`}
       >
         {value}
       </div>
@@ -53,10 +57,14 @@ const Results = () => {
     <div className="end-stack text-medium">
       <div className="text-large results-title">{t("results-title")}</div>
       <div id="time" style={{ textAlign: "center" }}>
-        {t("their-time")} {timeText}
+        {!ownSolve && (
+          <span>
+            {t("their-time")} {timeText}
+            <br />
+          </span>
+        )}
         {yourTime !== "" && !futurePuzzle && !pastPuzzle && (
           <span>
-            <br />
             {t("your-time")} {yourTime}
           </span>
         )}
@@ -74,10 +82,12 @@ const Results = () => {
         <div className="motivation">{t("motivation-past-puzzle")}</div>
       )}
       <div className="end-container text-medium button-end">
-        <div id="their-words" className="end-stack">
-          <div>{t("their-words-title")}</div>
-          {renderTheirWords()}
-        </div>
+        {!ownSolve && (
+          <div id="their-words" className="end-stack">
+            <div>{t("their-words-title")}</div>
+            {renderTheirWords()}
+          </div>
+        )}
         {choWords && !futurePuzzle && !pastPuzzle && (
           <div id="your-words" className="end-stack">
             <div>{t("your-words-title")}</div>
