@@ -1,3 +1,9 @@
+@media only screen and (max-width: 800px) {
+    .monster-input {
+    font-size: calc(28vw);
+    }
+}
+
 .previous-word-holder {
     height: 10vh;
 }
@@ -37,4 +43,18 @@
     flex-direction: column;
     align-items: center;
     bottom: 0;
+}
+
+.contained {
+    opacity: 0.7;
+}
+
+.uncontained {
+    opacity: 1;
+}
+
+.score-container {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }

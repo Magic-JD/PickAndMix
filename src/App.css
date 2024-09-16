@@ -50,6 +50,7 @@ html:focus-within {
 }
 
 main {
+    flex: 1 0 auto;
     padding-top: 4%;
 }
 
@@ -107,19 +108,8 @@ picture {
     font-family: var(--ff-body);
 }
 
-@media only screen and (max-width: 800px) {
-    .monster-input {
-    font-size: calc(28vw);
-    }
-}
-
 input:focus {
     outline: none;
-}
-
-.monster {
-    width: 80%;
-    height: 20%;
 }
 
 .text-small {
@@ -140,10 +130,6 @@ input:focus {
     font-family: var(--ff-heading);
 }
 
-.bold {
-    font-weight: bold;
-}
-
 .text-xl {
     color: var(--clr-text);
     font-size: var(--fs-extra-large);
@@ -152,10 +138,6 @@ input:focus {
 
 .background {
     background-color: var(--clr-background);
-}
-
-.highlight {
-    background-color: var(--clr-highlight);
 }
 
 .flex-container {
@@ -202,33 +184,6 @@ input:focus {
   transition-duration: 0.4s;
 }
 
-.back-button {
-  background-color: var(--clr-highlight);
-  color: var(--clr-text);
-  border: none;
-  padding: 2px 7px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: var(--fs-medium);
-  font-family: var(--ff-body);
-  border-radius: 8px;
-}
-
-.language-button {
-  background-color: var(--clr-background);
-  color: var(--clr-text);
-  border: none;
-  padding: 2px 7px;
-  margin: 5vh 5vw 5vh 5vw;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: var(--fs-medium);
-  font-family: var(--ff-body);
-  border-radius: 8px;
-}
-
 .button-small-dark {
   background-color: var(--clr-highlight);
   color: var(--clr-text);
@@ -251,21 +206,6 @@ input:focus {
   width: 30vw;
 }
 
-.button-small-light {
-  background-color: var(--clr-text);
-  color: var(--clr-background);
-  border: none;
-  padding: 2px 7px;
-  margin: 5vh 5vw 5vh 5vw;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: var(--fs-medium);
-  font-family: var(--ff-body);
-  border-radius: 8px;
-  width: 25vw;
-  transition-duration: 0.4s;
-}
 .button:hover {
   background-color: var(--clr-text);
   color: var(--clr-background);
@@ -286,42 +226,4 @@ input:focus {
 
 .left-nudged {
     padding-right: 50px;
-}
-
-.tagline {
-    opacity: 0.75;
-}
-
-.spaced-paragraph {
-    padding-bottom: 30px;
-}
-
-
-main {
-    flex: 1 0 auto;
-}
-
-.view {
-    height: 60vh;
-}
-
-
-
-.blurred {
-    filter: blur(8px);
-}
-
-
-.contained {
-    opacity: 0.7;
-}
-
-.uncontained {
-    opacity: 1;
-}
-
-.score-container {
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
 }

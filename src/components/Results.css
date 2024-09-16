@@ -6,3 +6,7 @@
 .motivation {
     margin-top: 3vh;
 }
+
+.blurred {
+    filter: blur(8px);
+}

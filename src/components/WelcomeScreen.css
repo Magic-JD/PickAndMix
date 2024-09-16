@@ -40,6 +40,10 @@
     width: 15vw;
 }
 
+.view {
+    height: 60vh;
+}
+
 .letter1 {
     animation: oneA 10s linear infinite forwards;
     width: 15vw;
