@@ -53,7 +53,7 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
           className="big-key"
           onClick={keyboardLayout === "STANDARD" ? onEnter : onBackspace}
         >
-          {keyboardLayout === "STANDARD" ? "ENTER" : "BACK"}
+          {keyboardLayout === "STANDARD" ? "↵" : "←"}
         </div>
         {keyboardKeys[2].map((letter) => (
           <div key={letter} className="key" onClick={() => onKeyPress(letter)}>
@@ -65,7 +65,7 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
           className="big-key"
           onClick={keyboardLayout === "STANDARD" ? onBackspace : onEnter}
         >
-          {keyboardLayout === "STANDARD" ? "BACK" : "ENTER"}
+          {keyboardLayout === "STANDARD" ? "←" : "↵"}
         </div>
       </div>
     </div>
