@@ -71,10 +71,7 @@ function EndGameComponent({
           >
             {t("share")}
           </button>
-          <a
-            className="button-small-dark button-end"
-            href="https://paypal.me/JosephDaunt"
-          >
+          <a className="button-small-dark button-end" href={t("donate-link")}>
             {t("donate")}
           </a>
         </div>
