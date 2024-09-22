@@ -14,7 +14,7 @@ function EndGameComponent({
 }) {
   const { showError } = useError();
   const handleShare = () => {
-    const domain = "https://pick-and-mix.vercel.app/results?";
+    const domain = "www.picknmix.io/results?";
     const wordsChosenId = previousWords;
     const wordsChosenString = wordsChosenId.join(":");
     const emojiText = convertToEmoji(previousWords);
