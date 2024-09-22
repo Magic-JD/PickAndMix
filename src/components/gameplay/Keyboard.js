@@ -13,7 +13,7 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
       } else if (key === "Backspace") {
         event.preventDefault();
         onBackspace();
-      } else if (/^[a-zA-Z]$/.test(key)) {
+      } else if (/^[a-zA-Z\u0400-\u04FF]$/.test(key)) {
         event.preventDefault();
         onKeyPress(key);
       }
