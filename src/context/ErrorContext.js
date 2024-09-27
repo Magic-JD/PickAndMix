@@ -7,7 +7,7 @@ const ErrorContext = createContext();
 
 export const ErrorProvider = ({ children }) => {
   const [error, setError] = useState(null);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const showError = (message) => {
     setError(message);
     setTimeout(() => {
