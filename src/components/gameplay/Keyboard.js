@@ -13,7 +13,7 @@ const Keyboard = ({ onKeyPress, onBackspace, onEnter }) => {
       } else if (key === "Backspace") {
         event.preventDefault();
         onBackspace();
-      } else if (/^[a-zA-Z\u0400-\u04FF]$/.test(key)) {
+      } else if (/^[a-zA-Z\u0400-\u04FFäöüÄÖÜß]$/.test(key)) {
         event.preventDefault();
         onKeyPress(key);
       }
@@ -79,6 +79,8 @@ function getKeyboardLayout(lang) {
       return keyboardLayouts["LATIN"];
     case "uk":
       return keyboardLayouts["CYRILLIC_UK"];
+    case "de":
+      return keyboardLayouts["GERMAN"];
     default:
       return keyboardLayouts["LATIN"];
   }
@@ -93,7 +95,12 @@ const keyboardLayouts = {
   CYRILLIC_UK: [
     ["Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ї"],
     ["Ф", "І", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Є"],
-    ["Ґ","Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю"],
+    ["Ґ", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю"],
+  ],
+  GERMAN: [
+    ["Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ü"],
+    ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä"],
+    ["Y", "X", "C", "V", "B", "N", "M"],
   ],
 };
 export default Keyboard;

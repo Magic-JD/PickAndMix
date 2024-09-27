@@ -22,6 +22,7 @@ const Settings = ({ toggleSettings, changeFont, changeLang, changeLayout }) => {
           <option value="en">{t('language-en')}</option>
           <option value="id">{t('language-id')}</option>
           <option value="uk">{t('language-uk')}</option>
+          <option value="de">{t('language-de')}</option>
         </select>
         <label htmlFor="fontSelect">{t('font-label')}</label>
         <select id="fontSelect" value="" onChange={changeFont}>
