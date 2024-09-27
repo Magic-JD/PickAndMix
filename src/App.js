@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./components/Main";
 import GlobalHeader from "./components/GlobalHeader";
@@ -73,7 +72,6 @@ function App() {
         </Routes>
       </ErrorProvider>
       <Analytics />
-      <SpeedInsights />
     </Router>
   );
 }
