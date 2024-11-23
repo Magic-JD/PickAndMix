@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WelcomeScreen from "./WelcomeScreen";
 import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
+import Advent from "./advent/Advent";
 import { getWords, getTodaysWords } from "../data/words.js";
 import { wipeCookies } from "../utils/CookiesUtils.js"
 import Cookies from "js-cookie";
@@ -57,13 +58,17 @@ function Main() {
     setAppState("PLAYING");
   };
 
+  const handleChristmasClick = () => {
+    setAppState("CHRISTMAS");
+  };
+
   let lang = Cookies.get("lang");
   if (!lang) {
     lang = "en";
   }
   switch (appState) {
     case "WELCOME":
-      return <WelcomeScreen onStartClick={handleStartClick} />;
+      return <WelcomeScreen onStartClick={handleStartClick} onChristmasClick={handleChristmasClick} />;
     case "PLAYING":
       return (
         <Gameplay
@@ -83,6 +88,12 @@ function Main() {
           currentScore={currentScore}
           streak={streak}
           msecondsPlayed={secondsPlayed}
+        />
+      );
+      case "CHRISTMAS":
+      return (
+        <Advent
+          backToMain={handleBackToWelcome}
         />
       );
     default:

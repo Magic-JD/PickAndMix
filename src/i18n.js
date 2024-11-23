@@ -5,6 +5,7 @@ const resources = {
     en: {
         translation: {
             "start": "Start",
+            "christmas": "Advent Challenge!",
             "current": "Current",
             "goal": "Goal",
             "not-a-word": "This is not a recognised word.",

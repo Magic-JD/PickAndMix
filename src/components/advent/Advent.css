@@ -1,0 +1,13 @@
+.advent-grid {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.advent-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid var(--clr-highlight);
+    padding: 10px;
+}
