@@ -1,7 +1,8 @@
 .advent-grid {
     display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(5, 1fr);
+    width: 100vw;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .advent-day {
@@ -9,5 +10,8 @@
     align-items: center;
     justify-content: center;
     border: 5px solid var(--clr-highlight);
-    padding: 10px;
+    padding: 5%;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    margin: 10%;
 }

@@ -5,7 +5,7 @@ const resources = {
     en: {
         translation: {
             "start": "Start",
-            "christmas": "Advent Challenge!",
+            "christmas": "🎅",
             "current": "Current",
             "goal": "Goal",
             "not-a-word": "This is not a recognised word.",
@@ -73,6 +73,7 @@ const resources = {
     id: {
         translation: {
             "start": "Mulai",
+            "christmas": "🎅",
             "current": "Saat Ini",
             "goal": "Tujuan",
             "not-a-word": "Ini bukan kata yang dikenali.",
@@ -140,6 +141,7 @@ const resources = {
     uk: {
         translation: {
             "start": "Старт",
+            "christmas": "🎅",
             "current": "Поточне",
             "goal": "Мета",
             "not-a-word": "Це не визнане слово.",
@@ -207,6 +209,7 @@ const resources = {
     de: {
         translation: {
             "start": "Start",
+            "christmas": "🎅",
             "current": "Aktuell",
             "goal": "Ziel",
             "not-a-word": "Dies ist kein anerkanntes Wort.",

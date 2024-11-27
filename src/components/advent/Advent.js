@@ -1,10 +1,12 @@
 import React from "react";
 import "./Advent.css";
+import AdventDay from "./AdventDay"
 import { useError } from "../../context/ErrorContext";
 import { useTranslation } from "react-i18next";
 
 function Advent({
   backToMain,
+    playDay
 }) {
   const { showError } = useError();
 
@@ -15,10 +17,10 @@ function Advent({
   const { t } = useTranslation();
 
   return (
-      <div>
-      <div className="advent-grid text-medium">
+      <div className="flex-stack">
+      <div className="advent-grid text-large">
         {
-            Array.from({length: 25}, (_, i) => i + 1 ).map(n => <div className="advent-day"> {n} </div>)
+            Array.from({length: 44}, (_, i) => i + 1 ).map(n => <AdventDay number={n} playDay={playDay}/>)
         }
       </div>
           <button

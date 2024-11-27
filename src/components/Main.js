@@ -4,7 +4,7 @@ import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
 import Advent from "./advent/Advent";
 import { getWords, getTodaysWords } from "../data/words.js";
-import { wipeCookies } from "../utils/CookiesUtils.js"
+import { wipeCookies } from "../utils/CookiesUtils.js";
 import Cookies from "js-cookie";
 
 function Main() {
@@ -62,20 +62,28 @@ function Main() {
     setAppState("CHRISTMAS");
   };
 
+  const handlePlayDay = (number) => {
+    setAppState("CHRISTMAS-DAY");
+  };
+
   let lang = Cookies.get("lang");
   if (!lang) {
     lang = "en";
   }
   switch (appState) {
     case "WELCOME":
-      return <WelcomeScreen onStartClick={handleStartClick} onChristmasClick={handleChristmasClick} />;
+      return (
+        <WelcomeScreen
+          onStartClick={handleStartClick}
+          onChristmasClick={handleChristmasClick}
+        />
+      );
     case "PLAYING":
       return (
         <Gameplay
           startWord={getOrUseWords(getTodaysWords(lang).startWord)}
           endWord={getTodaysWords(lang).endWord}
           words={getWords(lang)}
-          backToWelcome={handleBackToWelcome}
           onGameEnd={handleGameEnd}
           partialChoice={handlePartialChoice}
         />
@@ -90,11 +98,28 @@ function Main() {
           msecondsPlayed={secondsPlayed}
         />
       );
-      case "CHRISTMAS":
+    case "CHRISTMAS":
       return (
-        <Advent
-          backToMain={handleBackToWelcome}
-        />
+        <Advent backToMain={handleBackToWelcome} playDay={handlePlayDay} />
+      );
+    case "CHRISTMAS-DAY":
+      return (
+        <div className="text-medium">
+          <div className="flex-stack">
+            <span>Advent Challenge!</span>
+            <span>There are X days until Christmas,</span>
+            <span>There are only X possible solutions!</span>
+          </div>
+          <Gameplay
+            startWord={["LEMON"]}
+            endWord={"SPICY"}
+            words={getWords("en")}
+            onGameEnd={() => {
+              setAppState("CHRISTMAS");
+            }}
+            partialChoice={() => {}}
+          />
+        </div>
       );
     default:
       return <WelcomeScreen onStartClick={handleStartClick} />;
@@ -144,6 +169,5 @@ function calculateMidnight() {
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
-
 
 export default Main;
