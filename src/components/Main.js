@@ -98,6 +98,7 @@ function Main() {
           words={getWords(lang)}
           onGameEnd={handleGameEnd}
           partialChoice={handlePartialChoice}
+          mustCompleteInFive={false}
         />
       );
     case "ENDED":
@@ -128,6 +129,7 @@ function Main() {
             words={getWords("en")}
             onGameEnd={handleAdventEnd}
             partialChoice={() => {}}
+            mustCompleteInFive={true}
           />
         </div>
       );

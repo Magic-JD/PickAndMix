@@ -12,6 +12,7 @@ const resources = {
             "already-chosen": "You have already used this word.",
             "incorrect-length": "Words must be 5 letters long.",
             "too-many-modifications": "You can only change one letter per turn.",
+            "too-many-words": "You must complete the puzzle using only 5 changes.",
             "congratulations": "Congratulations!",
             "streak": "Day Streak!",
             "choices": "Choices",

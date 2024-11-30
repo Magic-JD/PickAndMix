@@ -3,13 +3,14 @@ import Keyboard from "./Keyboard";
 import PreviousWords from "./PreviousWords";
 import { useError } from "../../context/ErrorContext";
 import "./Gameplay.css";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const VALID = 0;
 const NOT_A_WORD = 1;
 const ALREADY_CHOSEN = 2;
 const INCORRECT_LENGTH = 3;
 const TOO_MANY_MODIFICATIONS = 4;
+const TOO_MANY_WORDS = 5;
 
 const Gameplay = ({
   startWord,
@@ -17,6 +18,7 @@ const Gameplay = ({
   words,
   onGameEnd,
   partialChoice,
+  mustCompleteInFive,
 }) => {
   const { showError } = useError();
   const [inputText, setInputText] = useState("");
@@ -38,6 +40,7 @@ const Gameplay = ({
         words,
         previousWords.slice(0, currentScore + 1),
         lastWord,
+        mustCompleteInFive,
       );
       if (gameState === VALID) {
         updateGame(word);
@@ -54,6 +57,7 @@ const Gameplay = ({
       words,
       previousWords.slice(0, currentScore + 1),
       lastWord,
+      mustCompleteInFive,
     );
     if (gameState !== VALID) {
       showError(findErrorString(gameState));
@@ -133,7 +137,10 @@ const Gameplay = ({
   );
 };
 
-function validateWord(word, words, usedWords, lastWord) {
+function validateWord(word, words, usedWords, lastWord, mustCompleteInFive) {
+  if (mustCompleteInFive && usedWords.length() == 5) {
+    return TOO_MANY_WORDS;
+  }
   if (word.length !== 5) {
     return INCORRECT_LENGTH;
   }
@@ -160,19 +167,21 @@ function validateWord(word, words, usedWords, lastWord) {
   return VALID;
 }
 
-function findErrorString(errorCode){
-    switch (errorCode) {
-        case 1:
-           return "not-a-word";
-        case 2:
-           return "already-chosen";
-        case 3:
-           return "incorrect-length";
-        case 4:
-           return "too-many-modifications";
-        default:
-            return "500 server error";
-    }
+function findErrorString(errorCode) {
+  switch (errorCode) {
+    case 1:
+      return "not-a-word";
+    case 2:
+      return "already-chosen";
+    case 3:
+      return "incorrect-length";
+    case 4:
+      return "too-many-modifications";
+    case 5:
+      return "too-many-words";
+    default:
+      return "500 server error";
+  }
 }
 
 export default Gameplay;
