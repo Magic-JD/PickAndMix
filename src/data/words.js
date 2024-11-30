@@ -1550,7 +1550,7 @@ export function getTodaysWords(lang){
 }
 
 export function getAdventWordStart(number){
-    return "BREAK";
+    return "BIGHT";
 }
 
 export function getAdventWordEnd(number){

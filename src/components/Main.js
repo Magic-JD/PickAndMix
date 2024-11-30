@@ -3,7 +3,12 @@ import WelcomeScreen from "./WelcomeScreen";
 import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
 import Advent from "./advent/Advent";
-import { getWords, getTodaysWords, getAdventWordStart, getAdventWordEnd } from "../data/words.js";
+import {
+  getWords,
+  getTodaysWords,
+  getAdventWordStart,
+  getAdventWordEnd,
+} from "../data/words.js";
 import { wipeCookies } from "../utils/CookiesUtils.js";
 import Cookies from "js-cookie";
 
@@ -68,6 +73,11 @@ function Main() {
     setAppState("CHRISTMAS-DAY");
   };
 
+  const handleAdventEnd = () => {
+    localStorage.setItem(`advent-day-${adventDay}`, "true");
+    setAppState("CHRISTMAS");
+  };
+
   let lang = Cookies.get("lang");
   if (!lang) {
     lang = "en";
@@ -109,16 +119,14 @@ function Main() {
         <div className="text-medium">
           <div className="flex-stack">
             <span>Advent Challenge!</span>
-            <span>There are { 25 - adventDay} days until Christmas,</span>
-            <span>There are only { 25 - adventDay } possible solutions!</span>
+            <span>There are {25 - adventDay} days until Christmas,</span>
+            <span>There are only {25 - adventDay} possible solutions!</span>
           </div>
           <Gameplay
             startWord={[getAdventWordStart(adventDay)]}
             endWord={getAdventWordEnd(adventDay)}
             words={getWords("en")}
-            onGameEnd={() => {
-              setAppState("CHRISTMAS");
-            }}
+            onGameEnd={handleAdventEnd}
             partialChoice={() => {}}
           />
         </div>
