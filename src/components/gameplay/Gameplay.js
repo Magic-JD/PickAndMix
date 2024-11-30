@@ -138,7 +138,7 @@ const Gameplay = ({
 };
 
 function validateWord(word, words, usedWords, lastWord, mustCompleteInFive) {
-  if (mustCompleteInFive && usedWords.length() == 5) {
+  if (mustCompleteInFive && usedWords.length === 5) {
     return TOO_MANY_WORDS;
   }
   if (word.length !== 5) {
