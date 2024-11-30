@@ -1,0 +1,21 @@
+.advent-grid {
+    display: grid;
+    width: 100vw;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.advent-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid var(--clr-highlight);
+    padding: 5%;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    margin: 10%;
+}
+
+.completed {
+    background-color: green;
+}

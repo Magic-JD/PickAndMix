@@ -15,7 +15,6 @@ const Gameplay = ({
   startWord,
   endWord,
   words,
-  backToWelcome,
   onGameEnd,
   partialChoice,
 }) => {

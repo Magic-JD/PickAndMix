@@ -2,7 +2,7 @@ import React from "react";
 import "./WelcomeScreen.css";
 import { useTranslation } from "react-i18next";
 
-const WelcomeScreen = ({ onStartClick }) => {
+const WelcomeScreen = ({ onStartClick, onChristmasClick }) => {
   const { t } = useTranslation();
   return (
     <div id="view" className="view">
@@ -29,6 +29,15 @@ const WelcomeScreen = ({ onStartClick }) => {
             >
               {t("start")}
             </button>
+            {new Date().getMonth() === 11 && (
+              <button
+                id="christmas-button"
+                className="button-small-dark"
+                onClick={onChristmasClick}
+              >
+                {t("christmas")}
+              </button>
+            )}
           </div>
         </div>
       </div>

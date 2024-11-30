@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import WelcomeScreen from "./WelcomeScreen";
 import Gameplay from "./gameplay/Gameplay";
 import EndGame from "./EndGame";
-import { getWords, getTodaysWords } from "../data/words.js";
-import { wipeCookies } from "../utils/CookiesUtils.js"
+import Advent from "./advent/Advent";
+import {
+  getWords,
+  getTodaysWords,
+  getAdventWordStart,
+  getAdventWordEnd,
+} from "../data/words.js";
+import { wipeCookies } from "../utils/CookiesUtils.js";
 import Cookies from "js-cookie";
 
 function Main() {
@@ -12,6 +18,7 @@ function Main() {
   const [currentScore, setCurrentScore] = useState(Cookies.get("score"));
   const [streak, setStreak] = useState(Cookies.get("streak"));
   const [secondsPlayed, setSecondsPlayed] = useState(calculateSecondsPlayed());
+  const [adventDay, setAdventDay] = useState(0);
 
   const handleBackToWelcome = () => {
     wipeCookies();
@@ -57,20 +64,38 @@ function Main() {
     setAppState("PLAYING");
   };
 
+  const handleChristmasClick = () => {
+    setAppState("CHRISTMAS");
+  };
+
+  const handlePlayDay = (number) => {
+    setAdventDay(number);
+    setAppState("CHRISTMAS-DAY");
+  };
+
+  const handleAdventEnd = () => {
+    localStorage.setItem(`advent-day-${adventDay}`, "true");
+    setAppState("CHRISTMAS");
+  };
+
   let lang = Cookies.get("lang");
   if (!lang) {
     lang = "en";
   }
   switch (appState) {
     case "WELCOME":
-      return <WelcomeScreen onStartClick={handleStartClick} />;
+      return (
+        <WelcomeScreen
+          onStartClick={handleStartClick}
+          onChristmasClick={handleChristmasClick}
+        />
+      );
     case "PLAYING":
       return (
         <Gameplay
           startWord={getOrUseWords(getTodaysWords(lang).startWord)}
           endWord={getTodaysWords(lang).endWord}
           words={getWords(lang)}
-          backToWelcome={handleBackToWelcome}
           onGameEnd={handleGameEnd}
           partialChoice={handlePartialChoice}
         />
@@ -84,6 +109,27 @@ function Main() {
           streak={streak}
           msecondsPlayed={secondsPlayed}
         />
+      );
+    case "CHRISTMAS":
+      return (
+        <Advent backToMain={handleBackToWelcome} playDay={handlePlayDay} />
+      );
+    case "CHRISTMAS-DAY":
+      return (
+        <div className="text-medium">
+          <div className="flex-stack">
+            <span>Advent Challenge!</span>
+            <span>There are {25 - adventDay} days until Christmas,</span>
+            <span>There are only {25 - adventDay} possible solutions!</span>
+          </div>
+          <Gameplay
+            startWord={[getAdventWordStart(adventDay)]}
+            endWord={getAdventWordEnd(adventDay)}
+            words={getWords("en")}
+            onGameEnd={handleAdventEnd}
+            partialChoice={() => {}}
+          />
+        </div>
       );
     default:
       return <WelcomeScreen onStartClick={handleStartClick} />;
@@ -133,6 +179,5 @@ function calculateMidnight() {
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
-
 
 export default Main;
