@@ -20,7 +20,7 @@ function Advent({
       <div className="flex-stack">
       <div className="advent-grid text-large">
         {
-            Array.from({length: 44}, (_, i) => i + 1 ).map(n => <AdventDay number={n} playDay={playDay}/>)
+            Array.from({length: 24}, (_, i) => i + 1 ).map(n => <AdventDay number={n} playDay={playDay}/>)
         }
       </div>
           <button

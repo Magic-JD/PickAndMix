@@ -1548,3 +1548,12 @@ export function getTodaysWords(lang){
             return dateToChallengeEnglish[currentDate];
     }
 }
+
+export function getAdventWordStart(number){
+    return "BREAK";
+}
+
+export function getAdventWordEnd(number){
+    return "MIGHT";
+}
+
