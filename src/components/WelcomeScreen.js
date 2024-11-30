@@ -29,13 +29,15 @@ const WelcomeScreen = ({ onStartClick, onChristmasClick }) => {
             >
               {t("start")}
             </button>
-            <button
-              id="christmas-button"
-              className="button-small-dark"
-              onClick={onChristmasClick}
-            >
-              {t("christmas")}
-            </button>
+            {new Date().getMonth() === 11 && (
+              <button
+                id="christmas-button"
+                className="button-small-dark"
+                onClick={onChristmasClick}
+              >
+                {t("christmas")}
+              </button>
+            )}
           </div>
         </div>
       </div>

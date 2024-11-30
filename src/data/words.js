@@ -1550,11 +1550,15 @@ export function getTodaysWords(lang){
     }
 }
 
+
+const adventWordStart = ["SLICK", "PUNCH"];
+const adventWordEnd = ["NYMPH", "BEFIT"];
+
 export function getAdventWordStart(number){
-    return "BIGHT";
+    return adventWordStart[number - 1];
 }
 
 export function getAdventWordEnd(number){
-    return "MIGHT";
+    return adventWordEnd[number - 1];
 }
 
