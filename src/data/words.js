@@ -1551,8 +1551,8 @@ export function getTodaysWords(lang){
 }
 
 
-const adventWordStart = ["SLICK", "PUNCH", "BIRDS", "JUNKY", "BIGHT", "DITZY", "FUNGI", "KRONE", "HONED", "DERBY", "WORKS", "DOUBT"];
-const adventWordEnd = ["NYMPH", "BEFIT", "WHOMP", "SCOWL", "CLUNK", "HULKS", "JAPED", "WHUMP", "BUMPY", "FLUNK", "LIMBY", "FAWNY"];
+const adventWordStart = ["SLICK", "PUNCH", "BIRDS", "JUNKY", "BIGHT", "DITZY", "FUNGI", "KRONE", "HONED", "DERBY", "WORKS", "DOUBT", "GRIPY"];
+const adventWordEnd = ["NYMPH", "BEFIT", "WHOMP", "SCOWL", "CLUNK", "HULKS", "JAPED", "WHUMP", "BUMPY", "FLUNK", "LIMBY", "FAWNY", "LUNCH"];
 
 export function getAdventWordStart(number){
     return adventWordStart[number - 1];
