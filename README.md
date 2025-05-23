@@ -1,4 +1,4 @@
-# Pick And Mix: A Semantic Word Puzzle
+# Pick And Mix: A Word Puzzle
 
 ## Live Demo
 
