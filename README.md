@@ -8,6 +8,8 @@ Experience the game live: <https://pick-and-mix.vercel.app/>
 
 Pick And Mix is an engaging daily word game designed to challenge your vocabulary and lateral thinking. The objective is to transform a starting word into a target word within a maximum of five steps. Each step requires you to form an anagram of the previous word and change exactly one letter. The game features dynamically changing word pairs each day, offering a fresh challenge and a unique blend of anagram and word-ladder mechanics. Players can track their progress, revisit previous words, and share their triumphs with friends.
 
+![demo](demos/wordplay.gif)
+
 ## Key Features
 
 * **Daily Challenges:** New starting and ending words every day.
