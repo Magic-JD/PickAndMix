@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-Experience the game live: <https://pick-and-mix.io/>
+Experience the game live: <picknmix.io//>
 
 ## Introduction
 
