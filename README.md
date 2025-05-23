@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-Experience the game live: <https://pick-and-mix.vercel.app/>
+Experience the game live: <https://pick-and-mix.io/>
 
 ## Introduction
 
