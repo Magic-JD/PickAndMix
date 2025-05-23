@@ -113,7 +113,7 @@ While the game is designed for direct play via the live demo, you can set up the
 1.  **Clone the repository:**
 
     ```
-    git clone [Your-Repository-URL]
+    git clone git@github.com:Magic-JD/PickAndMix.git
     cd pick-and-mix
     ```
 
